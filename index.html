@@ -11,7 +11,7 @@
     <title>Home - Ponto de Venda</title>
 </head>
 <body>
-    <header class="page_header header_grid">
+    <header class="page_header flex_row">
         <div class="heading_container">
             <h1 class="heading">
                 Vender
@@ -19,73 +19,166 @@
         </div>
 
         <div class="client_container">
-            <div class="client_space">
-                <img src="" alt="Imagem de Perfil">
+            <div class="client_space flex_row">
+                <!--<img src="" alt="Imagem de Perfil">-->
+                <div style="width: 35px; height: 35px; border-radius: 50%; background: linear-gradient(#257590, midnightblue);"></div>
                 <div class="client_info">
-                    <span id="clientname" class="clientname"></span>
-                    <span id="client_email" class="client_email"></span>
+                    <span id="clientname" class="clientname">Teste</span>
+                    <br>
+                    <span id="client_email" class="client_email">teste@teste.gmail.com</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <nav class="navbar flex-column">
+    <nav class="navbar flex_column shown text">
         <div class="menu_icon_container">
             <i class="fa-solid fa-bars"></i>
         </div>
 
-        <ul class="menu flex-column">
-            <li class="menu_item flex-row">
+        <ul class="menu flex_column">
+            <li class="menu_item">
                 <a href="#">
-                    <i class="fa-solid fa-tag"></i>
-                    <span>Produtos</span>
+                    <div class="menu_item_container flex_row">
+                        <i class="fa-solid fa-tag"></i>
+                        <span>Produtos</span>
+                    </div>
                 </a>
             </li>
-            <li class="menu_item flex-row">
+            <li class="menu_item">
                 <a href="#">
-                    <i class="fa-solid fa-box"></i>
-                    <span>Estoque</span>
+                    <div class="menu_item_container flex_row">
+                        <i class="fa-solid fa-box"></i>
+                        <span>Estoque</span>
+                    </div>
                 </a>
             </li>
-            <li class="menu_item flex-row">
+            <li class="menu_item">
                 <a href="#">
-                    <i class="fa-solid fa-user"></i>
-                    <span>Cliente</span>
+                    <div class="menu_item_container flex_row">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Cliente</span>
+                    </div>
                 </a>
             </li>
-            <li class="menu_item flex-row">
+            <li class="menu_item">
                 <a href="#">
-                    <i class="fa-solid fa-chart-simple"></i>
-                    <span>Estatísticas</span>
+                    <div class="menu_item_container flex_row">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <span>Estatísticas</span>
+                    </div>
                 </a>
             </li>
         </ul>
     </nav>
 
-    <main class="products">
+    <main class="products text">
         <nav class="products_navbar">
-            <ul class="menu flex-row">
+            <ul class="menu flex_row">
                 <li class="menu_item item_active">Todos</li>
                 <li class="menu_item">Bebidas</li>
-                <li class="menu_item">Hortifruit</li>
-                <li class="menu_item">Higiene Pessoal</li>
+                <li class="menu_item">Comida</li>
                 <li class="menu_item">Limpeza</li>
             </ul>
         </nav>
 
-        <article class="products_grid">
-            <div class="product_card">
-                <img src="" alt="Produto à venda" class="products_img">
+        <article class="all_products text flex_row">
+            <div class="product_card flex_column">
+                <!--<img src="" alt="Produto à venda" class="products_img">-->
+                <div style="height: 75px; width: 100%; background: linear-gradient(#257590, midnightblue);"></div>
                 <p class="product_name">Teste</p>
                 <p class="product_price">R$ 7,99</p>
             </div>
+            <div class="product_card flex_column">
+                <!--<img src="" alt="Produto à venda" class="products_img">-->
+                <div style="height: 75px; width: 100%; background: linear-gradient(#257590, midnightblue);"></div>
+                <p class="product_name">Teste</p>
+                <p class="product_price">R$ 7,99</p>
+            </div>
+            <div class="product_card flex_column">
+                <!--<img src="" alt="Produto à venda" class="products_img">-->
+                <div style="height: 75px; width: 100%; background: linear-gradient(#257590, midnightblue);"></div>
+                <p class="product_name">Teste</p>
+                <p class="product_price">R$ 7,99</p>
+            </div>
+            <div class="product_card flex_column">
+                <!--<img src="" alt="Produto à venda" class="products_img">-->
+                <div style="height: 75px; width: 100%; background: linear-gradient(#257590, midnightblue);"></div>
+                <p class="product_name">Teste</p>
+                <p class="product_price">R$ 7,99</p>
+            </div>
+            <div class="product_card flex_column">
+                <!--<img src="" alt="Produto à venda" class="products_img">-->
+                <div style="height: 75px; width: 100%; background: linear-gradient(#257590, midnightblue);"></div>
+                <p class="product_name">Teste</p>
+                <p class="product_price">R$ 7,99</p>
+            </div>
+            <div class="product_card flex_column">
+                <!--<img src="" alt="Produto à venda" class="products_img">-->
+                <div style="height: 75px; width: 100%; background: linear-gradient(#257590, midnightblue);"></div>
+                <p class="product_name">Teste</p>
+                <p class="product_price">R$ 7,99</p>
+            </div>
+            <div class="product_card flex_column">
+                <!--<img src="" alt="Produto à venda" class="products_img">-->
+                <div style="height: 75px; width: 100%; background: linear-gradient(#257590, midnightblue);"></div>
+                <p class="product_name">Teste</p>
+                <p class="product_price">R$ 7,99</p>
+            </div>
+            <div class="product_card flex_column">
+                <!--<img src="" alt="Produto à venda" class="products_img">-->
+                <div style="height: 75px; width: 100%; background: linear-gradient(#257590, midnightblue);"></div>
+                <p class="product_name">Teste</p>
+                <p class="product_price">R$ 7,99</p>
+            </div>
+            <div class="product_card flex_column">
+                <!--<img src="" alt="Produto à venda" class="products_img">-->
+                <div style="height: 75px; width: 100%; background: linear-gradient(#257590, midnightblue);"></div>
+                <p class="product_name">Teste</p>
+                <p class="product_price">R$ 7,99</p>
+            </div>
+            <div class="product_card flex_column">
+                <!--<img src="" alt="Produto à venda" class="products_img">-->
+                <div style="height: 75px; width: 100%; background: linear-gradient(#257590, midnightblue);"></div>
+                <p class="product_name">Teste</p>
+                <p class="product_price">R$ 7,99</p>
+            </div>
+            
         </article>
     </main>
 
-    <section class="carrinho_produto">
-        <p class="subheading">Selecionar cliente</p>
+    <section class="carrinho_produto text flex_column">
+        <p class="subheading">
+            <a href="#">
+                Selecionar cliente
+            </a>
+        </p>
 
         <div id="selected_products" class="selected_products"></div>
+    
+        <form action="post">
+            <div class="carrinho_finish flex_column">
+                <div class="carrinho_products flex_row">
+                    <p class="text">
+                        Itens
+                    </p>
+                    <div class="carrinho_info">
+            
+                    </div>
+                </div>
+                <div class="carrinho_buttons_container flex_row">
+                    <button class="button button_reset" type="reset">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                    <button class="button button_submit flex_row" type="submit">
+                        <span>Finalizar</span>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
     </section>
+
+    <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>

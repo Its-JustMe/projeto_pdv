@@ -2,9 +2,9 @@
 
 body {
     display: grid;
+    gap: 0;
     grid-template-areas: var(--page-grid);
-    font-size: var(--text-size);
-    background-color: #ece9f0;
+    background-color: var(--secondary-color);
 }
 
 .products, .menu_icon_container, .page_header, .carrinho {

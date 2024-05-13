@@ -1,37 +1,54 @@
 .navbar {
+    --navbar-width: 8.5vw;
+
     gap: 1em;
     grid-area: navbar;
 
     height: 100vh;
-    width: 250px;
+    width: var(--navbar-width);
 
     color: var(--secondary-text-color);
     background-color: var(--primary-color);
 
-    position: sticky;
+    position: fixed;
+
+    transition: width .5s;
+}
+
+.navbar.shown {
+    --navbar-width: 20vw;
+    width: --navbar-width;
 }
 
 .menu_icon_container > i {
+    padding: 3px;
     font-size: var(--heading-size);
     cursor: pointer;
     transition: color .5s transform .5s;
 }
 
-.menu {
-    justify-content: center;
+.navbar > .menu > .menu_item:hover {
+    background-color: var(--primary-color-alt);
 }
 
-.menu_item {
-    padding: 1.5em 0 1.5em .8em;
-    transition: color .5s background .5s;
-    cursor: pointer;
+.menu_item_container {
+    gap: .5em;
+    position: relative;
 }
-.menu_item > a > i {
+
+.navbar .menu_item > a > .menu_item_container > span {
+    display: none;
+}
+.navbar.shown .menu_item > a > .menu_item_container > span {
+    display: block;
+}
+.navbar.shown .menu_item > a > .menu_item_container > i {
     font-size: .8em;
     padding-top: 2px;
     padding-right: 5px;   
 }
-
-.menu_item:hover {
-    background-color: var(--primary-color-alt);
+.navbar .menu_item > a > .menu_item_container > i {
+    font-size: 1.2em;
+    text-align: center;
+    text-indent: 10px;
 }

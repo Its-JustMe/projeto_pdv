@@ -1,3 +1,30 @@
-.carrinho {
-    grid-area: carrinho;
+.carrinho_produto {
+    background-color: #fff;
+
+    width: 25vw;
+    min-height: 80vh;
+
+    overflow-y: scroll;
+
+    position: fixed;
+        top: 100px;
+        right: 0;
+
+    padding: 1em;
+    margin-right: 0.8em;
+
+    border-radius: 8px;
+
+    justify-content: space-between;
+}
+
+.carrinho_produto > .subheading {
+    text-align: right;
+    color: var(--tertiary-color);
+}
+
+.carrinho_buttons_container {
+    gap: .5em;
+    justify-content: center;
+    align-items: center;
 }

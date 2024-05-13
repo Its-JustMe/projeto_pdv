@@ -1,8 +1,89 @@
-.flex-column {
+/*Classes para definir Flexbox*/
+.flex_column {
     display: flex;
     flex-direction: column;
 }
-.flex-row {
+.flex_row {
     display: flex;
     flex-direction: row;
+}
+
+/*Classes de estilo para textos*/
+.heading {
+    font-size: var(--heading-size);
+}
+
+.subheading {
+    font-size: var(--subheading-size);
+}
+
+.text {
+    font-size: var(--text-size);
+}
+
+/*Classes de estilos para botões*/
+.button {
+    border-radius: 6px;
+    cursor: pointer;
+    height: 40px;
+    padding: 4px;
+    font-size: calc(var(--text-size) - .1em);
+    font-weight: bold;
+    transition: color .5s, background .5s;
+}
+
+.button_submit {
+    width: 120px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+}
+.button_submit:hover {
+    background-color: var(--primary-color-alt);
+    color: var(--secondary-color);
+}
+
+.button_reset {
+    background: none;
+    color: var(--primary-text-color);
+    border: 1px solid var(--primary-text-color);
+    text-align: center;
+    width: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.button_reset::before {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 0;
+    transition: width .5s;
+    background-color: var(--primary-color);
+    
+    position: absolute;
+        top: 0;
+        left: 0;
+
+    z-index: -1;
+}
+.button_reset:hover::before {
+    width: 100%;
+}
+.button_reset:hover {
+    color: var(--secondary-color);
+}
+
+/*Classes para estilos de navbar*/
+.menu {
+    justify-content: center;
+}
+
+.menu > .menu_item {
+    padding: 1.5em 0 1.5em .8em;
+    transition: color .3s, background .3s;
+    cursor: pointer;
 }

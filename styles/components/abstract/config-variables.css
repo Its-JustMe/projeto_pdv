@@ -8,19 +8,24 @@
     --primary-text-color: #262626;
     --secondary-text-color: #fff;
 
-    --text-size: clamp(1.5vw, 1.4em, 1em);
-    --heading-size: clamp(1.8vw, 2em, 1.4em);
+    --text-size: clamp(1.35vw, 1.4em, 1em);
+    --heading-size: clamp(2.5vw, 2em, 1.4em);
+
+    /* ================================= */
+
+    /*Medidas de larguras*/
+
+    --navbar-width: 20vw;
+    --carrinho-section-width: 20vw;
+    --main-section-width: 50vw;
+    --header-width: 80vw;
 
     /* ================================= */
 
     /* Posicionamento/interface */
-    --header-grid: 
-        'heading heading client client';
 
     --page-grid:
         'navbar header header header header'
         'navbar products products products carrinho'
-    
-    
+       
 }
-

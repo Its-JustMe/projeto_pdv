@@ -1,14 +1,20 @@
 .page_header {
-    width: 100%;
+    width: var(--header-width);
     height: 80px;
-}
 
-.header_grid {
-    grid-area: header;
-    display: grid;
-    grid-template-areas: var(--header-grid);
+    background-color: #fff;
+
+    position: fixed;
+        top: 0;
+        left: var(--navbar-width);
+
+    transition: left .5s;
 
     border-bottom: 2px solid var(--primary-color);
+    box-shadow: 2px 5px 4px #0000003f;
+
+    justify-content: space-between;
+    align-items: center;
 }
 
 .heading_container {
@@ -20,4 +26,8 @@
 .client_container {
     padding: 2px;
     min-width: 20%;
+}
+
+.client_space {
+    gap: 1em;
 }

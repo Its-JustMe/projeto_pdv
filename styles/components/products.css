@@ -1,9 +1,31 @@
 .products {
     min-height: 200vh;
-    margin-top: 1em;
     background-color: #fff;
     border-radius: 8px;
-    max-width: 850px;
-    min-width: 400px;
+    width: var(--main-section-width);
     grid-area: products;
+
+    margin-top: 100px;
+    margin-right: var(--carrinho-section-width);
+    margin-left: var(--navbar-width);
+
+    transition: margin .5s;
+}
+
+.all_products {
+    margin-top: 1em;
+    padding: 0.5em;
+    flex-wrap: wrap;
+    gap: .5em;
+    align-items: center;
+    justify-content: center;
+}
+
+.product_card {
+    flex-basis: clamp(4vw, 8em, 6em);
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px #0000006b;
 }
