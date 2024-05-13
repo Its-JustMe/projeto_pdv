@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Link FontAwesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!--Link CSS-->
+    <link rel="stylesheet" href="./styles/index.css">
+    <title>Home - Ponto de Venda</title>
+</head>
+<body>
+    <header class="page_header header_grid">
+        <div class="heading_container">
+            <h1 class="heading">
+                Vender
+            </h1>
+        </div>
+
+        <div class="client_container">
+            <div class="client_space">
+                <img src="" alt="Imagem de Perfil">
+                <div class="client_info">
+                    <span id="clientname" class="clientname"></span>
+                    <span id="client_email" class="client_email"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar flex-column">
+        <div class="menu_icon_container">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="menu flex-column">
+            <li class="menu_item flex-row">
+                <a href="#">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Produtos</span>
+                </a>
+            </li>
+            <li class="menu_item flex-row">
+                <a href="#">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Estoque</span>
+                </a>
+            </li>
+            <li class="menu_item flex-row">
+                <a href="#">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Cliente</span>
+                </a>
+            </li>
+            <li class="menu_item flex-row">
+                <a href="#">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Estatísticas</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="products">
+        <nav class="products_navbar">
+            <ul class="menu flex-row">
+                <li class="menu_item item_active">Todos</li>
+                <li class="menu_item">Bebidas</li>
+                <li class="menu_item">Hortifruit</li>
+                <li class="menu_item">Higiene Pessoal</li>
+                <li class="menu_item">Limpeza</li>
+            </ul>
+        </nav>
+
+        <article class="products_grid">
+            <div class="product_card">
+                <img src="" alt="Produto à venda" class="products_img">
+                <p class="product_name">Teste</p>
+                <p class="product_price">R$ 7,99</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="carrinho_produto">
+        <p class="subheading">Selecionar cliente</p>
+
+        <div id="selected_products" class="selected_products"></div>
+    </section>
+</body>
+</html>

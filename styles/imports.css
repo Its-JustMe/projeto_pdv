@@ -1,0 +1,7 @@
+@import './components/abstract/reset.css';
+@import './components/abstract/config-variables.css';
+@import './components/abstract/generic-classes.css';
+@import './components/header.css';
+@import './components/navbar.css';
+@import './components/products.css';
+@import './components/carrinho.css';

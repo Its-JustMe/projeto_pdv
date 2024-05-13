@@ -1,0 +1,12 @@
+@import './imports.css';
+
+body {
+    display: grid;
+    grid-template-areas: var(--page-grid);
+    font-size: var(--text-size);
+    background-color: #ece9f0;
+}
+
+.products, .menu_icon_container, .page_header, .carrinho {
+    padding: 0.8em;
+}

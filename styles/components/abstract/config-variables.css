@@ -1,0 +1,26 @@
+/*Declaração de variáveis globais*/
+:root {
+    /*Cores e Tipografia*/
+    --primary-color: #1f618d;
+    --primary-color-alt: #174e72;
+    --secondary-color: #ecf0f1;
+    --tertiary-color: #0e4162;
+    --primary-text-color: #262626;
+    --secondary-text-color: #fff;
+
+    --text-size: clamp(1.5vw, 1.4em, 1em);
+    --heading-size: clamp(1.8vw, 2em, 1.4em);
+
+    /* ================================= */
+
+    /* Posicionamento/interface */
+    --header-grid: 
+        'heading heading client client';
+
+    --page-grid:
+        'navbar header header header header'
+        'navbar products products products carrinho'
+    
+    
+}
+

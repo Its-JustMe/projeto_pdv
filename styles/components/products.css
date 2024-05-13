@@ -1,0 +1,9 @@
+.products {
+    min-height: 200vh;
+    margin-top: 1em;
+    background-color: #fff;
+    border-radius: 8px;
+    max-width: 850px;
+    min-width: 400px;
+    grid-area: products;
+}
