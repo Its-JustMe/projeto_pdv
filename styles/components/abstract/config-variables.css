@@ -11,6 +11,8 @@
     --text-size: clamp(1.35vw, 1.4em, 1em);
     --heading-size: clamp(2.5vw, 2em, 1.4em);
 
+    --default-font: "Neue Plak";
+
     /* ================================= */
 
     /*Medidas de larguras*/
@@ -28,4 +30,10 @@
         'navbar header header header header'
         'navbar products products products carrinho'
        
+}
+
+/*Declarando fonte externa*/
+@font-face {
+    font-family: "Neue Plak";
+    src: url('../../../assets/fonts/NeuePlak-Regular.ttf');
 }

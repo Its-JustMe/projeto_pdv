@@ -17,6 +17,6 @@ export function navbarHandler() {
         // Caso contrário, define a largura como zero
         root.style.setProperty('--navbar-width', '8.5vw');
         root.style.setProperty('--main-section-width', '60vw');
-        root.style.setProperty('--header-width', '96vw');
+        root.style.setProperty('--header-width', '93vw');
     }
 }

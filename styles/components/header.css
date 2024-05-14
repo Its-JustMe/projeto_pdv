@@ -1,6 +1,6 @@
 .page_header {
     width: var(--header-width);
-    height: 80px;
+    height: 90px;
 
     background-color: #fff;
 
@@ -24,7 +24,7 @@
     min-width: 250px;
 }
 .client_container {
-    padding: 2px;
+    padding: .4em;
     min-width: 20%;
 }
 
