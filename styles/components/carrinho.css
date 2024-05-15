@@ -25,6 +25,7 @@
 
 .carrinho_buttons_container {
     gap: .5em;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    flex-wrap: wrap;
 }

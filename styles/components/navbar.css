@@ -2,7 +2,6 @@
     --navbar-width: 8.5vw;
 
     gap: 1em;
-    grid-area: navbar;
 
     height: 100vh;
     width: var(--navbar-width);
@@ -17,7 +16,7 @@
 
 .navbar.shown {
     --navbar-width: 20vw;
-    width: --navbar-width;
+    width: var(--navbar-width);
 }
 
 .menu_icon_container > i {

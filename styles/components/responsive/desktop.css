@@ -1,0 +1,5 @@
+@media screen and (min-width: 769px) {
+    .header_first_container > .menu_icon_container {
+        display: none;
+    }
+}

@@ -5,3 +5,6 @@
 @import './components/navbar.css';
 @import './components/products.css';
 @import './components/carrinho.css';
+@import './components/responsive/mobile.css';
+@import './components/responsive/tablet.css';
+@import './components/responsive/desktop.css';

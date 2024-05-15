@@ -12,3 +12,8 @@
 button:focus, input:focus {
     outline: 0;
 }
+
+::selection {
+    background-color: #74bedd;
+    color: var(--primary-text-color);
+}

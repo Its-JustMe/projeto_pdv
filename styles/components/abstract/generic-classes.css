@@ -33,7 +33,7 @@
 }
 
 .button_submit {
-    width: 120px;
+    width: clamp(2vw, 20em, 14em);
     background-color: var(--primary-color);
     color: var(--secondary-color);
 
@@ -51,7 +51,9 @@
     color: var(--primary-text-color);
     border: 1px solid var(--primary-text-color);
     text-align: center;
-    width: 40px;
+    width: 2.5em;
+    line-height: 35px;
+    overflow: hidden;
     position: relative;
     z-index: 2;
 }
