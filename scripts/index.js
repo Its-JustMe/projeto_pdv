@@ -26,8 +26,12 @@ import { jsonRequest } from "./modules/jsonRequest.js";
         document.querySelectorAll('.fa-bars').forEach(btn => {
             btn.addEventListener('click', () => interactions.navbarHandler(btn));
         });
-        
-        console.log(products.data);
+
+        document.querySelectorAll('.product_card').forEach(card => {
+            card.addEventListener('click', () => {
+                products.addProductToChart(card.id);
+            });
+        });
 
     });
 })();

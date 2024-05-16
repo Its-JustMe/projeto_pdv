@@ -101,29 +101,32 @@
             </a>
         </p>
 
-        <div id="selected_products" class="selected_products"></div>
-    
-        <form action="post">
-            <div class="cart_finish flex_column">
-                <div class="cart_itens flex_row">
-                    <p class="text">
-                        Itens
-                    </p>
-                    <div class="cart_info">
-            
+        <div id="chart" class="chart flex_column">
+            <!--Itens do carrinho-->
+        </div>
+
+            <form action="post">
+                <div class="cart_finish flex_column">
+                    <div class="cart_itens flex_row">
+                        <p class="text">
+                            Itens
+                        </p>
+                        <div class="cart_info">
+                            <!-- Informações do carrinho -->
+                        </div>
+                    </div>
+                    <div class="chart_buttons_container flex_row">
+                        <button class="button button_reset" type="reset">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                        <button class="button button_submit flex_row" type="submit">
+                            <span>Finalizar</span>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
                     </div>
                 </div>
-                <div class="chart_buttons_container flex_row">
-                    <button class="button button_reset" type="reset">
-                        <i class="fa-regular fa-trash-can"></i>
-                    </button>
-                    <button class="button button_submit flex_row" type="submit">
-                        <span>Finalizar</span>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </section>
 
     <script type="module" src="./scripts/index.js"></script>

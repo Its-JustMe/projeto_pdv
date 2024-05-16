@@ -1,4 +1,5 @@
 .product_chart {
+    gap: 2em;
     background-color: #fff;
 
     width: 25vw;
@@ -14,8 +15,10 @@
     margin-right: 0.8em;
 
     border-radius: 8px;
+}
 
-    justify-content: space-between;
+.chart {
+    min-height: 45vh;
 }
 
 .product_chart > .subheading {
@@ -28,4 +31,24 @@
     justify-content: flex-end;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.selected_products {
+    gap: .8em;
+    justify-content: space-between;
+    font-weight: bold;
+
+    font-size: calc(var(--text-size) - .2em);
+}
+
+.qtd_product {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid var(--primary-text-color);
+}
+
+.product_info_container {
+    padding: 4px;
 }
