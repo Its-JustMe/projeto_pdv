@@ -43,7 +43,7 @@
 }
 .button_submit:hover {
     background-color: var(--primary-color-alt);
-    color: var(--secondary-color);
+    color: var(--tertiary-color-alt);
 }
 
 .button_reset {
@@ -55,7 +55,7 @@
     line-height: 35px;
     overflow: hidden;
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 .button_reset::before {
@@ -88,4 +88,22 @@
     padding: 1.5em 0 1.5em .8em;
     transition: color .3s, background .3s;
     cursor: pointer;
+}
+
+/* Classes para o ícone de menu */
+
+.menu_item_container {
+    gap: .5em;
+    position: relative;
+}
+
+.menu_icon_container > i.active {
+    transform: rotate(90deg);
+}
+
+.menu_icon_container > i {
+    padding: 3px;
+    font-size: var(--heading-size);
+    cursor: pointer;
+    transition: color .5s, transform .5s;
 }

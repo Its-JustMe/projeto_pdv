@@ -1,4 +1,4 @@
-.carrinho_produto {
+.product_chart {
     background-color: #fff;
 
     width: 25vw;
@@ -18,12 +18,12 @@
     justify-content: space-between;
 }
 
-.carrinho_produto > .subheading {
+.product_chart > .subheading {
     text-align: right;
     color: var(--tertiary-color);
 }
 
-.carrinho_buttons_container {
+.chart_buttons_container {
     gap: .5em;
     justify-content: flex-end;
     align-items: center;

@@ -9,14 +9,14 @@
     margin-right: var(--carrinho-section-width);
     margin-left: var(--navbar-width);
 
-    transition: margin .5s;
+    transition: margin .5s, width .5s;
 }
 
 .all_products {
-    margin-top: 1em;
+    margin-top: 1.5em;
     padding: 0.5em;
     flex-wrap: wrap;
-    gap: .5em;
+    gap: 1em;
     align-items: center;
     justify-content: center;
 }

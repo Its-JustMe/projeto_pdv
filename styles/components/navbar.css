@@ -10,6 +10,7 @@
     background-color: var(--primary-color);
 
     position: fixed;
+    z-index: 3;
 
     transition: width .5s;
 }
@@ -19,20 +20,13 @@
     width: var(--navbar-width);
 }
 
-.menu_icon_container > i {
-    padding: 3px;
-    font-size: var(--heading-size);
-    cursor: pointer;
-    transition: color .5s transform .5s;
+.navbar > .menu_icon_container > i:hover {
+    color: var(--tertiary-color-alt);
 }
 
 .navbar > .menu > .menu_item:hover {
     background-color: var(--primary-color-alt);
-}
-
-.menu_item_container {
-    gap: .5em;
-    position: relative;
+    color: var(--tertiary-color-alt);
 }
 
 .navbar .menu_item > a > .menu_item_container > span {

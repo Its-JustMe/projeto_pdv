@@ -81,10 +81,7 @@
     <main class="products text">
         <nav class="products_navbar">
             <ul class="menu flex_row">
-                <li class="menu_item item_active">Todos</li>
-                <li class="menu_item">Bebidas</li>
-                <li class="menu_item">Comida</li>
-                <li class="menu_item">Limpeza</li>
+                <li class="menu_item item_active" id="all_products">Todos</li>
             </ul>
         </nav>
 
@@ -97,7 +94,7 @@
         </article>
     </main>
 
-    <section class="carrinho_produto text flex_column">
+    <section class="product_chart text flex_column">
         <p class="subheading">
             <a href="#">
                 Selecionar cliente
@@ -107,16 +104,16 @@
         <div id="selected_products" class="selected_products"></div>
     
         <form action="post">
-            <div class="carrinho_finish flex_column">
-                <div class="carrinho_products flex_row">
+            <div class="cart_finish flex_column">
+                <div class="cart_itens flex_row">
                     <p class="text">
                         Itens
                     </p>
-                    <div class="carrinho_info">
+                    <div class="cart_info">
             
                     </div>
                 </div>
-                <div class="carrinho_buttons_container flex_row">
+                <div class="chart_buttons_container flex_row">
                     <button class="button button_reset" type="reset">
                         <i class="fa-regular fa-trash-can"></i>
                     </button>

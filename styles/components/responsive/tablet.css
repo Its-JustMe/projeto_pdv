@@ -1,4 +1,3 @@
-
 @media screen and (max-width: 768px) {
     .header_first_container {
         gap: 2em;
@@ -17,6 +16,7 @@
 
     .navbar.shown {
         width: 200px;
+        border-right: 2px solid var(--primary-text-color);
         box-shadow: 4px 0px 4px #0000003f;
     }
 
@@ -29,9 +29,13 @@
     }
 
     .products {
-        --products-section: 70vw;
+        --products-section: 90vw;
 
-        margin-left: 0;
+        margin: 100px auto;
         width: var(--products-section);
+    }
+
+    .product_chart {
+        display: none;
     }
 }

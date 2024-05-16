@@ -7,10 +7,12 @@
     position: fixed;
         top: 0;
         left: var(--navbar-width);
+    z-index: 3;
 
-    transition: left .5s;
-
-    border-bottom: 2px solid var(--primary-color);
+    transition: left .5s, width .5s;
+    
+    border-bottom: 4px solid transparent;
+    border-image: linear-gradient(to right, #318aa7, #191970) 10;
     box-shadow: 0px 5px 4px #0000003f;
 
     justify-content: space-between;

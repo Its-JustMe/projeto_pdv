@@ -1,14 +1,14 @@
-/** Função que faz a requisição do data.json */
+/** Função que faz a requisição dos dados do arquivo JSON */
 export const jsonRequest = async () => {
     try {
         const response = await fetch('./scripts/modules/data.json');
         if (!response.ok) {
-            throw new Error('Erro ao carregar o arquivo JSON: ' + response.statusText);
+            throw new Error('Erro ao carregar o JSON: ' + response.statusText);
         }
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Erro ao carregar o arquivo JSON:', error);
+        console.error('Erro:', error);
         throw error;
     }
 }
