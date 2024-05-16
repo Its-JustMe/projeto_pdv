@@ -1,3 +1,4 @@
+/** Função que lida com as interações do menu da página */
 export function navbarHandler() {
     const navbar = document.querySelector('.navbar');
     const root = document.documentElement;
@@ -17,4 +18,12 @@ export function navbarHandler() {
     } else if (!navbar.classList.contains('shown') && window.innerWidth < 768) {
         navbar.classList.add('shown');
     }
+}
+
+export function changeActiveMenuItems (items, itemActive) {
+    items.forEach(item => {
+        item.classList.remove('item_active');
+    });
+
+    itemActive.classList.toggle('item_active');
 }

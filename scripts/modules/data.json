@@ -1,1 +1,8 @@
-{"a": "b"}
+[
+    {"Id":"1","Client_id":"1","Name":"Seda Zomo Alfafa","Photo":"https://cdn.awsli.com.br/800x800/2632/2632002/produto/237023266/sedazomoalfafa-38n0r0nybs.jpg","Price":"5.00","CostPrice":"2.45","Stock":"10","Category":"Sedas","Brand":"Zomo"},
+    {"Id":"1","Client_id":"1","Name":"Seda Zomo Alfafa","Photo":"https://cdn.awsli.com.br/800x800/2632/2632002/produto/237023266/sedazomoalfafa-38n0r0nybs.jpg","Price":"5.00","CostPrice":"2.45","Stock":"10","Category":"Sedas","Brand":"Zomo"},
+    {"Id":"1","Client_id":"1","Name":"Seda Zomo Alfafa","Photo":"https://cdn.awsli.com.br/800x800/2632/2632002/produto/237023266/sedazomoalfafa-38n0r0nybs.jpg","Price":"5.00","CostPrice":"2.45","Stock":"10","Category":"Sedas","Brand":"Zomo"},
+    {"Id":"1","Client_id":"1","Name":"Seda Zomo Alfafa","Photo":"https://cdn.awsli.com.br/800x800/2632/2632002/produto/237023266/sedazomoalfafa-38n0r0nybs.jpg","Price":"5.00","CostPrice":"2.45","Stock":"10","Category":"Sedas","Brand":"Zomo"},
+    {"Id":"1","Client_id":"1","Name":"Seda Zomo Alfafa","Photo":"https://cdn.awsli.com.br/800x800/2632/2632002/produto/237023266/sedazomoalfafa-38n0r0nybs.jpg","Price":"5.00","CostPrice":"2.45","Stock":"10","Category":"Sedas","Brand":"Zomo"},
+    {"Id":"1","Client_id":"1","Name":"Seda Zomo Alfafa","Photo":"https://cdn.awsli.com.br/800x800/2632/2632002/produto/237023266/sedazomoalfafa-38n0r0nybs.jpg","Price":"5.00","CostPrice":"2.45","Stock":"10","Category":"Teste","Brand":"Zomo"}
+]
