@@ -40,6 +40,7 @@ export class Products {
     *    "Brand": string;
     *  } } product Objeto contendo as informações do produto a ser renderizado
     * @param { number } count Contador, que servirá como numeração de identificador de cada produto 
+    * @returns { string } retorna um bloco HTML do card do produto
     */
     renderProductCard (product, count) {
         return `

@@ -1,6 +1,8 @@
 /** Função que lida com as interações do menu da página */
 export function navbarHandler(menuBtn) {
+    /** Elemento Navbar */
     const navbar = document.querySelector('.navbar');
+    /** Elemento root */
     const root = document.documentElement;
 
     if (navbar.classList.contains('shown') && window.innerWidth > 768) {
