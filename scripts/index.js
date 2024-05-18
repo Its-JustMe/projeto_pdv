@@ -7,6 +7,7 @@ import { jsonRequest } from "./modules/jsonRequest.js";
         const data = await jsonRequest();
         const products = new Products(data);
 
+        products.updateChartItems();
         products.getMenuCategories();
         products.getAllProducts();
 
@@ -19,7 +20,7 @@ import { jsonRequest } from "./modules/jsonRequest.js";
                 if (item.id === 'all_products') {
                     return products.getAllProducts();
                 }
-                products.getProductsByCategory(item.dataset.category)
+                products.getProductsByCategory(item.dataset.category);
             });
         }
         
@@ -27,11 +28,6 @@ import { jsonRequest } from "./modules/jsonRequest.js";
             btn.addEventListener('click', () => interactions.navbarHandler(btn));
         });
 
-        document.querySelectorAll('.product_card').forEach(card => {
-            card.addEventListener('click', () => {
-                products.addProductToChart(card.id);
-            });
-        });
-
+        document.querySelector('.button_clear').addEventListener('click', () => products.clearChartSection());
     });
 })();

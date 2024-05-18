@@ -25,7 +25,7 @@
     --text-size: clamp(.8vw, 1.2em, .8em);
     
     flex-basis: clamp(6vw, 14em, 12em);
-    height: 10em;
+    min-height: 10em;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -35,11 +35,20 @@
     font-family: var(--text-size);
     cursor: pointer;
     transition: transform .3s, box-shadow .2s;
+
+    padding-bottom: 8px;
+    margin-top: 2px;
+}
+
+.subheading.category {
+    width: 100%;
+    background-color: var(--primary-color-alt);
+    color: var(--secondary-text-color);
 }
 
 .product_card:hover {
     transform: translateY(-10px);
-    box-shadow: 2px 4px 6px #0000006b;
+    box-shadow: 4px 4px 6px #0000006b;
 }
 
 .product_name {

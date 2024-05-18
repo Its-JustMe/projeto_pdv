@@ -5,11 +5,11 @@
     width: 25vw;
     min-height: 80vh;
 
-    overflow-y: scroll;
+    overflow-y: auto;
 
     position: fixed;
-        top: 100px;
-        right: 0;
+    top: 100px;
+    right: 0;
 
     padding: 1em;
     margin-right: 0.8em;
@@ -33,9 +33,10 @@
     flex-wrap: wrap;
 }
 
-.selected_products {
+.selected_product {
     gap: .8em;
     justify-content: space-between;
+    align-items: center;
     font-weight: bold;
 
     font-size: calc(var(--text-size) - .2em);

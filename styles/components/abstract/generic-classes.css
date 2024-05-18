@@ -32,7 +32,7 @@
     transition: color .5s, background .5s;
 }
 
-.button_submit {
+.button_finish {
     width: clamp(2vw, 20em, 14em);
     background-color: var(--primary-color);
     color: var(--secondary-color);
@@ -41,12 +41,12 @@
     align-items: center;
     gap: .5em;
 }
-.button_submit:hover {
+.button_finish:hover {
     background-color: var(--primary-color-alt);
     color: var(--tertiary-color-alt);
 }
 
-.button_reset {
+.button_clear {
     background: none;
     color: var(--primary-text-color);
     border: 1px solid var(--primary-text-color);
@@ -58,7 +58,7 @@
     z-index: 1;
 }
 
-.button_reset::before {
+.button_clear::before {
     content: '';
     display: block;
     height: 100%;
@@ -72,10 +72,10 @@
 
     z-index: -1;
 }
-.button_reset:hover::before {
+.button_clear:hover::before {
     width: 100%;
 }
-.button_reset:hover {
+.button_clear:hover {
     color: var(--secondary-color);
 }
 

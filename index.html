@@ -105,21 +105,23 @@
             <!--Itens do carrinho-->
         </div>
 
-            <form action="post">
-                <div class="cart_finish flex_column">
+            <article class="cart_finish flex-column">
+                <div class="cart_info_container flex_column">
                     <div class="cart_itens flex_row">
                         <p class="text">
                             Itens
                         </p>
-                        <div class="cart_info">
+
+                        <div id="cart_info">
                             <!-- Informações do carrinho -->
                         </div>
                     </div>
+                    
                     <div class="chart_buttons_container flex_row">
-                        <button class="button button_reset" type="reset">
+                        <button class="button button_clear">
                             <i class="fa-regular fa-trash-can"></i>
                         </button>
-                        <button class="button button_submit flex_row" type="submit">
+                        <button class="button button_finish flex_row">
                             <span>Finalizar</span>
                             <i class="fa-solid fa-cart-shopping"></i>
                         </button>

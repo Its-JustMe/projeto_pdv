@@ -1,0 +1,41 @@
+@media screen and (max-width: 768px) {
+    .header_first_container {
+        gap: 2em;
+    }
+    .header_first_container > .menu_icon_container {
+        display: block;
+        padding: 0;
+        font-size: var(--text-size);
+        margin-top: 0.2em;
+    }
+
+    .navbar {
+        width: 0px;
+        top: 90px;
+    }
+
+    .navbar.shown {
+        width: 200px;
+        border-right: 2px solid var(--primary-text-color);
+        box-shadow: 4px 0px 4px #0000003f;
+    }
+
+    .page_header {
+        width: 100vw;
+        left: 0;
+    }
+    .navbar .menu_icon_container {
+        display: none;
+    }
+
+    .products {
+        --products-section: 90vw;
+
+        margin: 100px auto;
+        width: var(--products-section);
+    }
+
+    .product_chart {
+        display: none;
+    }
+}
