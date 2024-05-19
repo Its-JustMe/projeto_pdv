@@ -57,25 +57,28 @@ export class Products {
     }
 
     /** Método que procura um card específico na seção de produtos pelo id 
-     * @param { string } id Id do card do produto
-     * @returns { {
-     *  name: string;
-     *  price: number;
-     *  quantity: number;
-     *  productId: string;
-     *  uniqueId: string;
-     * } }  retorna um objeto com as informações do produto ou null
+    * @param { string } id Id do card do produto
+    * @returns { {
+    *  name: string;
+    *  unitPrice: number;
+    *  price: number;
+    *  quantity: number;
+    *  productId: string;
+    *  uniqueId: string;
+    * } }  retorna um objeto com as informações do produto ou null
     */
     findProductById (id) {
-        const productCard = Array.from(document.querySelectorAll('.product_card')).find(card => card.id === id);
-        if (productCard) {
-            return {
-                name: productCard.dataset.name,
-                price: Number(productCard.dataset.price),
-                quantity: 1,
-                productId: productCard.dataset.id,
-                uniqueId: productCard.id
-            };
+       const productCard = Array.from(document.querySelectorAll('.product_card')).find(card => card.id === id);
+       if (productCard) {
+           const unitPrice = Number(productCard.dataset.price);
+           return {
+               name: productCard.dataset.name,
+               unitPrice: unitPrice,
+               price: unitPrice,
+               quantity: 1,
+               productId: productCard.dataset.id,
+               uniqueId: productCard.id
+           };
         }
     }
 
@@ -163,18 +166,19 @@ export class Products {
             `
             <div class="selected_product flex_row">
                 <div class="product_info_container">
-                    <input type="number" name="${product.name}" class="qtd_product" id="${product.uniqueId}" value="${product.quantity}">
+                    <input type="number" name="${product.name}" class="qtd_product" id="${product.uniqueId}" value="${product.quantity}" min="1">
                 </div>
                 <div class="product_info_container">
                     <p>${product.name}</p>
                 </div>
                 <div class="product_info_container">
-                    <p>R$ ${Number(product.quantity * product.price).toFixed(2)}</p>
+                    <p>R$ ${Number(product.price).toFixed(2)}</p>
                 </div>
             </div>
             `;
         }
 
+        this.getChartTotal();
         this.attachInputEventHandlers();
     }
 
@@ -194,6 +198,7 @@ export class Products {
         while(this.chartItems.length) {
             this.chartItems.pop();
         }
+        this.getChartTotal();
     }
 
     /** Método que limpa a seção de carrinho */
@@ -203,16 +208,55 @@ export class Products {
     }
 
     /** Método que altera a quantidade de um produto no carrinho 
-     * @param { number } value Nova quantidade do produto
-     * @param { string } uniqueId Identificador único do produto no carrinho
+    * @param { number } value Nova quantidade do produto
+    * @param { string } uniqueId Identificador único do produto no carrinho
     */
     changeProductQuantity(value, uniqueId) {
         for (let item of this.chartItems) {
             if (item.uniqueId === uniqueId) { 
                 item.quantity = value;
+                item.price = item.unitPrice * item.quantity;
                 break;
             }
         }
         this.updateChartItems();
+    }
+
+    /** Método que calcula e exibe o total do carrinho, incluindo a taxa de balcão se aplicável */
+    getChartTotal () {
+        const totalItems = this.chartItems.reduce((acc, product) => acc + product.quantity, 0);
+        const subtotal = this.chartItems.reduce((acc, product) => acc + product.price, 0);
+        const fee = 10;
+        const total = subtotal;
+
+        document.querySelector('.chart_items').innerHTML =
+        this.chartItems.length > 0 
+        ? 
+            `
+            <p>
+                <b>${totalItems} Itens</b>
+            </p>
+
+            <div id="chart_info" class="flex_row">
+                <p>
+                    <b style="color: var(--tertiary-color)">Subtotal:</b>
+                    <b>R$ ${subtotal.toFixed(2)}</b>
+                </p>
+                <label for="input_fee" class="flex_row" style="gap: .8em; align-items: center">
+                    <input type="checkbox" id="input_fee"> 
+                    <span>
+                        <b style="color: var(--tertiary-color)">
+                            Taxa de Balcão:
+                        </b> 
+                        <b>R$ ${fee.toFixed(2)}</b>
+                    </span>
+                </label>
+                <p>
+                    <b style="color: var(--tertiary-color)">Total:</b> 
+                    <b>R$ ${total.toFixed(2)}</b>
+                </p>
+            </div>
+            `
+        : '';
     }
 }

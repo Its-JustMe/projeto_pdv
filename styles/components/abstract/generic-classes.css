@@ -33,7 +33,7 @@
 }
 
 .button_finish {
-    width: clamp(2vw, 20em, 14em);
+    width: clamp(22vw, 20em, 14em);
     background-color: var(--primary-color);
     color: var(--secondary-color);
 
