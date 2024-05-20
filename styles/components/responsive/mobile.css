@@ -38,4 +38,16 @@
     .product_chart {
         display: none;
     }
+
+    .product_chart.shown {
+        display: flex;
+        width: 60vw;
+
+        position: fixed;
+            top: 55%;
+            left: 50%;
+        transform: translate(-50%, -50%);
+
+        box-shadow: 4px 4px 10px #000000af;
+    }
 }

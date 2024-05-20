@@ -39,3 +39,13 @@ export function changeActiveMenuItems (items, itemActive) {
 
     itemActive.classList.toggle('item_active');
 }
+
+export function attatchMobileEvents () {
+    document.querySelectorAll('.product_card').forEach(card => {
+        card.addEventListener('click', function () {
+            document.querySelector('.product_chart').classList.contains('shown')
+                ? document.querySelector('.product_chart').classList.add('remove')
+                : document.querySelector('.product_chart').classList.add('shown');
+        });
+    });
+}

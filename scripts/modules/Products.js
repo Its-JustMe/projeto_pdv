@@ -1,3 +1,5 @@
+import { attatchMobileEvents } from "./interactions.js";
+
 /** Classe responsável por lidar com os dados dos produtos do JSON */
 export class Products {
     /** Construtor da classe
@@ -13,7 +15,7 @@ export class Products {
      *    "Brand": string;
      *  }]} data  Dados do JSON
     */
-    constructor (data) {
+    constructor(data) {
         this.data = data;
 
         /** Seção de produtos da página */
@@ -25,24 +27,68 @@ export class Products {
 
         /** Itens do carrinho */
         this.chartItems = [];
+
+        /** Taxa de entrega padrão */
+        this.deliveryFee = 10;
+
+        /** Inicialização de eventos */
+        this.initializeEventHandlers();
+    }
+
+    /** Inicializa os handlers de eventos */
+    initializeEventHandlers() {
+        document.getElementById('select_customer_btn').addEventListener('click', () => {
+            document.getElementById('customer_popup').style.display = 'block';
+        });
+
+        document.querySelector('#customer_popup .close_btn').addEventListener('click', () => {
+            document.getElementById('customer_popup').style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == document.getElementById('customer-popup')) {
+                document.getElementById('customer_popup').style.display = 'none';
+            }
+        });
+
+        /*document.getElementById('select_delivery_fee_btn').addEventListener('click', () => {
+            document.getElementById('delivery_fee-popup').style.display = 'block';
+        });
+
+        document.querySelector('#delivery_fee-popup .close_btn').addEventListener('click', () => {
+            document.getElementById('delivery_fee_popup').style.display = 'none';
+        });*/
+
+        /*window.addEventListener('click', (event) => {
+            if (event.target == document.getElementById('delivery-fee-popup')) {
+                document.getElementById('delivery-fee-popup').style.display = 'none';
+            }
+        });*/
+
+        /*document.getElementById('delivery-fee-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const fee = parseFloat(document.getElementById('delivery-fee').value);
+            this.updateChartTotal(fee);
+            document.getElementById('delivery-fee-popup').style.display = 'none';
+        });*/
     }
 
     /** Método que renderiza um card de produto 
-    * @param { {
-    *    "Id": string;
-    *    "Client_id": string; 
-    *    "Name": string;
-    *    "Photo": string;
-    *    "Price": string;
-    *    "CostPrice": string;
-    *    "Stock": string;
-    *    "Category": string;
-    *    "Brand": string;
-    *  } } product Objeto contendo as informações do produto a ser renderizado
-    * @param { number } count Contador, que servirá como numeração de identificador de cada produto 
-    * @returns { string } retorna um bloco HTML do card do produto
-    */
-    renderProductCard (product, count) {
+     * @param { {
+     *    "Id": string;
+     *    "Client_id": string; 
+     *    "Name": string;
+     *    "Photo": string;
+     *    "Price": string;
+     *    "CostPrice": string;
+     *    "Stock": string;
+     *    "Category": string;
+     *    "Brand": string;
+     *  } } product Objeto contendo as informações do produto a ser renderizado
+     * @param { number } count Contador, que servirá como numeração de identificador de cada produto 
+     * @returns { string } retorna um bloco HTML do card do produto
+     */
+    renderProductCard(product, count) {
         return `
             <div class="product_card flex_column" id="${product.Id}-${count}" data-id="${product.Id}" data-name="${product.Name}" data-price="${product.Price}" data-category="${product.Category}">
                 <h2 class="subheading category">${product.Category}</h2>
@@ -57,17 +103,17 @@ export class Products {
     }
 
     /** Método que procura um card específico na seção de produtos pelo id 
-    * @param { string } id Id do card do produto
-    * @returns { {
-    *  name: string;
-    *  unitPrice: number;
-    *  price: number;
-    *  quantity: number;
-    *  productId: string;
-    *  uniqueId: string;
-    * } }  retorna um objeto com as informações do produto ou null
-    */
-    findProductById (id) {
+     * @param { string } id Id do card do produto
+     * @returns { {
+     *  name: string;
+     *  unitPrice: number;
+     *  price: number;
+     *  quantity: number;
+     *  productId: string;
+     *  uniqueId: string;
+     * } }  retorna um objeto com as informações do produto ou null
+     */
+    findProductById(id) {
        const productCard = Array.from(document.querySelectorAll('.product_card')).find(card => card.id === id);
        if (productCard) {
            const unitPrice = Number(productCard.dataset.price);
@@ -103,12 +149,12 @@ export class Products {
     }
 
     /** Método que limpa a seção de produtos */
-    clearProductsSection () {
+    clearProductsSection() {
         this.productsSection.innerHTML = '';
     }
 
     /** Função que renderiza todos os produtos disponíveis, sem nenhum filtro */
-    getAllProducts () {
+    getAllProducts() {
         this.clearProductsSection();
 
         let count = 0;
@@ -118,12 +164,13 @@ export class Products {
         });
 
         this.attachProductCardEventHandlers();
+        attatchMobileEvents();
     }
 
-    /** Método que renderiza todos os produtos disponpiveis, filtrados por uma determinada categoria 
+    /** Método que renderiza todos os produtos disponíveis, filtrados por uma determinada categoria 
      * @param { string } category Nome da categoria
-    */
-    getProductsByCategory (category) {
+     */
+    getProductsByCategory(category) {
         this.clearProductsSection();
 
         let count = 0;
@@ -138,7 +185,7 @@ export class Products {
     }
 
     /** Método que gera o conteúdo do menu da seção de produtos, com as categorias disponíveis */
-    getMenuCategories () {
+    getMenuCategories() {
         this.data.forEach(item => {
             const menuItem = document.createElement('li');
 
@@ -159,7 +206,7 @@ export class Products {
     }
 
     /** Método que atualiza os itens do carrinho */
-    updateChartItems () {
+    updateChartItems() {
         document.querySelector('#chart').innerHTML = '';
         for (let product of this.chartItems) {
             document.querySelector('#chart').innerHTML += 
@@ -185,7 +232,7 @@ export class Products {
     /** Método que adiciona um produto específico ao carrinho 
      * @param { string } id Id do produto selecionado
     */
-    addProductToChart (id) {
+    addProductToChart(id) {
         const product = this.findProductById(id);
         if (product) {
             this.chartItems.push(product);
@@ -194,7 +241,7 @@ export class Products {
     }
 
     /** Método que limpa o atributo chartItems */
-    clearChartItems () {
+    clearChartItems() {
         while(this.chartItems.length) {
             this.chartItems.pop();
         }
@@ -202,15 +249,15 @@ export class Products {
     }
 
     /** Método que limpa a seção de carrinho */
-    clearChartSection () {
+    clearChartSection() {
         this.clearChartItems();
         document.querySelector('#chart').innerHTML = '';
     }
 
     /** Método que altera a quantidade de um produto no carrinho 
-    * @param { number } value Nova quantidade do produto
-    * @param { string } uniqueId Identificador único do produto no carrinho
-    */
+     * @param { number } value Nova quantidade do produto
+     * @param { string } uniqueId Identificador único do produto no carrinho
+     */
     changeProductQuantity(value, uniqueId) {
         for (let item of this.chartItems) {
             if (item.uniqueId === uniqueId) { 
@@ -223,11 +270,11 @@ export class Products {
     }
 
     /** Método que calcula e exibe o total do carrinho, incluindo a taxa de balcão se aplicável */
-    getChartTotal () {
+    getChartTotal() {
         const totalItems = this.chartItems.reduce((acc, product) => acc + product.quantity, 0);
         const subtotal = this.chartItems.reduce((acc, product) => acc + product.price, 0);
-        const fee = 10;
-        const total = subtotal;
+        const fee = this.deliveryFee;
+        const total = subtotal + fee;
 
         document.querySelector('.chart_items').innerHTML =
         this.chartItems.length > 0 
@@ -242,15 +289,10 @@ export class Products {
                     <b style="color: var(--tertiary-color)">Subtotal:</b>
                     <b>R$ ${subtotal.toFixed(2)}</b>
                 </p>
-                <label for="input_fee" class="flex_row" style="gap: .8em; align-items: center">
-                    <input type="checkbox" id="input_fee"> 
-                    <span>
-                        <b style="color: var(--tertiary-color)">
-                            Taxa de Balcão:
-                        </b> 
-                        <b>R$ ${fee.toFixed(2)}</b>
-                    </span>
-                </label>
+                <p>
+                    <b style="color: var(--tertiary-color)">Entrega:</b>
+                    <b>R$ ${fee.toFixed(2)}</b>
+                </p>
                 <p>
                     <b style="color: var(--tertiary-color)">Total:</b> 
                     <b>R$ ${total.toFixed(2)}</b>
@@ -258,5 +300,13 @@ export class Products {
             </div>
             `
         : '';
+    }
+
+    /** Método que atualiza o total do carrinho com uma nova taxa de entrega
+     * @param { number } fee Nova taxa de entrega
+     */
+    updateChartTotal(fee) {
+        this.deliveryFee = fee;
+        this.getChartTotal();
     }
 }

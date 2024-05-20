@@ -24,6 +24,7 @@
 .product_chart > .subheading {
     text-align: right;
     color: var(--tertiary-color);
+    cursor: pointer;
 }
 
 .chart_buttons_container {
@@ -68,5 +69,9 @@
 #chart_info {
     gap: .5em;
     flex-wrap: wrap;
-    flex-basis: 220px;
+    flex-basis: 180px;
+}
+
+#chart_info > p {
+    padding: 2px;
 }
