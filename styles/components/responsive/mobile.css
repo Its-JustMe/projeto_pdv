@@ -36,18 +36,24 @@
     }
 
     .product_chart {
-        display: none;
+        width: 60vw;
+        opacity: 0;
+        margin-top: 3.1em;
+
+        position: fixed;
+            top: -10%;
+            left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .product_chart.shown {
-        display: flex;
-        width: 60vw;
-
-        position: fixed;
-            top: 55%;
-            left: 50%;
-        transform: translate(-50%, -50%);
+        opacity: 1;
+        top: 50%;
 
         box-shadow: 4px 4px 10px #000000af;
+    }
+
+    .top_chart_elements > .close_popup {
+        opacity: 1;
     }
 }

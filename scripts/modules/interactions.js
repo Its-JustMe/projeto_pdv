@@ -9,9 +9,9 @@ export function navbarHandler(menuBtn) {
         menuBtn.classList.remove('active');
         navbar.classList.remove('shown');
 
-        root.style.setProperty('--navbar-width', '8.5vw');
+        root.style.setProperty('--navbar-width', '6vw');
         root.style.setProperty('--main-section-width', '55vw');
-        root.style.setProperty('--header-width', '93vw');
+        root.style.setProperty('--header-width', '94.5vw');
     } else if (!navbar.classList.contains('shown') && window.innerWidth > 768) {
         menuBtn.classList.add('active');
         navbar.classList.add('shown');
@@ -34,18 +34,20 @@ export function navbarHandler(menuBtn) {
 */
 export function changeActiveMenuItems (items, itemActive) {
     for (let item of items) {
-        item.classList.remove('item_active');
+        item.classList.remove('active');
     }
 
-    itemActive.classList.toggle('item_active');
+    itemActive.classList.toggle('active');
 }
 
 export function attatchMobileEvents () {
     document.querySelectorAll('.product_card').forEach(card => {
-        card.addEventListener('click', function () {
-            document.querySelector('.product_chart').classList.contains('shown')
-                ? document.querySelector('.product_chart').classList.add('remove')
-                : document.querySelector('.product_chart').classList.add('shown');
-        });
+        card.addEventListener('click', () => document.querySelector('.product_chart').classList.add('shown'));
     });
+
+    document.querySelector('.close_popup').addEventListener('click', function () {
+        document.querySelector('.product_chart').classList.contains('shown')
+            ? document.querySelector('.product_chart').classList.remove('shown')
+            : document.querySelector('.product_chart').classList.add('shonw')
+    })
 }

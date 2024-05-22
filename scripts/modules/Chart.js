@@ -1,4 +1,9 @@
 export class Chart {
+    constructor() {
+        this.chartItems = [];
+        this.deliveryFee = 10; // Valor padrão da taxa de entrega
+    }
+
     /** Método que atualiza os itens do carrinho */
     updateChartItems() {
         document.querySelector('#chart').innerHTML = '';
@@ -84,8 +89,10 @@ export class Chart {
                     <b>R$ ${subtotal.toFixed(2)}</b>
                 </p>
                 <p>
-                    <b style="color: var(--tertiary-color)">Entrega:</b>
-                    <b>R$ ${fee.toFixed(2)}</b>
+                    <b style="color: var(--tertiary-color)">Entrega: R$</b>
+                    <b>
+                        <input type="number" name="fee" class="qtd_product fee" style="margin-left: 10px;" value="${this.deliveryFee}" min="1">
+                    </b>
                 </p>
                 <p>
                     <b style="color: var(--tertiary-color)">Total:</b> 
@@ -94,13 +101,34 @@ export class Chart {
             </div>
             `
         : '';
+
+        this.attachInputFeeHandler();
     }
 
-    /** Método que atualiza o total do carrinho com uma nova taxa de entrega
-     * @param { number } fee Nova taxa de entrega
-     */
-    updateChartTotal(fee) {
-        this.deliveryFee = fee;
+    /** Método que ativa os handlers dos inputs de quantidade de itens de produtos do carrinho */
+    attachInputFeeHandler() {
+        const feeInput = document.querySelector('.fee');
+        if (feeInput) {
+            feeInput.addEventListener('change', (event) => {
+                this.deliveryFee = Number(event.target.value);
+                this.updateChartTotal();
+            });
+        }
+    }
+
+    /** Método que atualiza o total do carrinho com uma nova taxa de entrega */
+    updateChartTotal() {
         this.getChartTotal();
+    }
+
+    /** Método que ativa os handlers dos inputs de quantidade de itens de produtos do carrinho */
+    attachInputEventHandlers() {
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('change', () => {
+                const productId = input.id;
+                const newQuantity = Number(input.value);
+                this.changeProductQuantity(newQuantity, productId);
+            });
+        });
     }
 }

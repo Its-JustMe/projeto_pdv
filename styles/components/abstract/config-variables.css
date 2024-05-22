@@ -10,7 +10,7 @@
     --primary-text-color: #262626;
     --secondary-text-color: #fff;
 
-    --text-size: clamp(1.35vw, 1.4em, 1em);
+    --text-size: clamp(1vw, 1.4em, 1em);
     --heading-size: clamp(2vw, 2em, 1.4em);
 
     --default-font: "Neue Plak";

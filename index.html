@@ -81,23 +81,22 @@
     <main class="products text">
         <nav class="products_navbar">
             <ul class="menu flex_row">
-                <li class="menu_item item_active" id="all_products">Todos</li>
+                <li class="menu_item underline active" id="all_products">Todos</li>
             </ul>
         </nav>
 
         <article class="all_products text flex_row">
-            <!--<div class="product_card flex_column">
-                <div style="height: 75px; width: 100%; background: linear-gradient(#257590, midnightblue);"></div>
-                <p class="product_name">Teste</p>
-                <p class="product_price">R$ 7,99</p>
-            </div>-->
+            <!--Cards de produtos-->
         </article>
     </main>
 
     <section class="product_chart text flex_column">
-        <p class="subheading" id="select_customer_btn">
-            Selecionar cliente
-        </p>
+        <div class="top_chart_elements flex_row">
+            <span class="close_popup">&times;</span>
+            <button class="subheading underline" id="select_customer_btn">
+                Selecionar cliente
+            </button>
+        </div>
 
         <div id="chart" class="chart flex_column">
             <!--Itens do carrinho-->

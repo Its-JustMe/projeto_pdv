@@ -107,3 +107,37 @@
     cursor: pointer;
     transition: color .5s, transform .5s;
 }
+
+/* Decorativos*/
+
+.underline {
+    position: relative;
+}
+
+.underline::before {
+    content: '';
+    position: absolute;
+        bottom: 0;
+        left: 0;
+    display: block;
+
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    background-color: var(--primary-color-alt);
+
+    transition: width .5s;
+}
+.underline:hover::before {
+    width: 100%;
+}
+.underline:hover {
+    color: var(--primary-color-alt);
+}
+
+.underline.active::before {
+    width: 100%;
+}
+.underline.active {
+    color: var(--primary-color-alt);
+}

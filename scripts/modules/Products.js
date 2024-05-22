@@ -53,26 +53,11 @@ export class Products extends Chart {
             }
         });
 
-        /*document.getElementById('select_delivery_fee_btn').addEventListener('click', () => {
-            document.getElementById('delivery_fee-popup').style.display = 'block';
-        });
-
-        document.querySelector('#delivery_fee-popup .close_btn').addEventListener('click', () => {
-            document.getElementById('delivery_fee_popup').style.display = 'none';
-        });*/
-
-        /*window.addEventListener('click', (event) => {
-            if (event.target == document.getElementById('delivery-fee-popup')) {
-                document.getElementById('delivery-fee-popup').style.display = 'none';
-            }
-        });*/
-
-        /*document.getElementById('delivery-fee-form').addEventListener('submit', (event) => {
-            event.preventDefault();
-            const fee = parseFloat(document.getElementById('delivery-fee').value);
-            this.updateChartTotal(fee);
-            document.getElementById('delivery-fee-popup').style.display = 'none';
-        });*/
+        // Removido daqui, pois agora está sendo adicionado diretamente na função getChartTotal
+        // document.querySelector('#delivery_fee').addEventListener('change', (event) => {
+        //     const newFee = Number(event.target.value);
+        //     this.updateChartTotal(newFee);
+        // });
     }
 
     /** Método que renderiza um card de produto 
@@ -199,13 +184,11 @@ export class Products extends Chart {
                 }
             }
 
-            menuItem.classList.add('menu_item');
+            menuItem.classList.add('menu_item', 'underline');
             menuItem.setAttribute('data-category', item.Category);
             menuItem.innerText = item.Category;
 
             this.productsNavbar.appendChild(menuItem);
         });
     }
-
-    
 }

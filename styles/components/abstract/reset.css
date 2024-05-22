@@ -5,6 +5,7 @@
     text-decoration: none;
     list-style-type: none;
     color: inherit;
+    background: none;
     box-sizing: border-box;
     overflow-x: hidden;
     font-family: var(--default-font);
