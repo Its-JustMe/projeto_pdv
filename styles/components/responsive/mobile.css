@@ -41,7 +41,7 @@
 
     .product_chart.shown {
         display: flex;
-        width: 70vw;
+        width: 60vw;
 
         position: fixed;
             top: 55%;

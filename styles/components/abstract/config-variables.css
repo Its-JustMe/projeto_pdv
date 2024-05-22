@@ -11,7 +11,7 @@
     --secondary-text-color: #fff;
 
     --text-size: clamp(1.35vw, 1.4em, 1em);
-    --heading-size: clamp(2.5vw, 2em, 1.4em);
+    --heading-size: clamp(2vw, 2em, 1.4em);
 
     --default-font: "Neue Plak";
 
@@ -19,10 +19,10 @@
 
     /*Medidas de larguras*/
 
-    --navbar-width: 8.5vw;
+    --navbar-width: 6vw;
     --carrinho-section-width: 20vw;
     --main-section-width: 55vw;
-    --header-width: 93vw;
+    --header-width: 94vw;
 
     /* ================================= */
 

@@ -3,13 +3,13 @@
     background-color: #fff;
 
     width: 30vw;
-    min-height: 50vh;
+    min-height: 45vh;
 
     overflow-y: auto;
 
     position: fixed;
-    top: 100px;
-    right: 0;
+        top: 100px;
+        right: 0;
 
     padding: 1em;
     margin-right: 0.8em;
@@ -60,16 +60,16 @@
     flex-wrap: wrap;
     gap: .5em;
 
-    min-height: 110px;
+    min-height: 20vh;
     border-top: 1px solid #eee;
     padding-top: 1em;
-    font-size: calc(var(--text-size) - .1em)
+    font-size: calc(var(--text-size) - .2em)
 }
 
 #chart_info {
     gap: .5em;
     flex-wrap: wrap;
-    flex-basis: 180px;
+    flex-basis: clamp(12vw, 11em, 8em);
 }
 
 #chart_info > p {

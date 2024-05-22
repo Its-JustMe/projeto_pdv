@@ -1,5 +1,5 @@
 .navbar {
-    --navbar-width: 8.5vw;
+    --navbar-width: 6vw;
 
     gap: 1em;
 
@@ -42,6 +42,6 @@
 }
 .navbar .menu_item > a > .menu_item_container > i {
     font-size: 1.2em;
+    margin-left: 10px;
     text-align: center;
-    text-indent: 1.5vw;
 }
