@@ -1,8 +1,10 @@
-/** Função que faz a requisição dos dados do arquivo JSON */
-export const jsonRequest = async () => {
+/** Função que faz a requisição dos dados do arquivo JSON 
+ * @param { string } fileName nome do arquivo (sem a extensão)
+*/
+export const jsonRequest = async (fileName) => {
     try {
         /** Constante que faz a requisição do arquivo JSON */
-        const response = await fetch('./scripts/modules/data.json');
+        const response = await fetch(`./db/${fileName}.json`);
         if (!response.ok) {
             throw new Error('Erro ao carregar o JSON: ' + response.statusText);
         }

@@ -1,0 +1,6 @@
+[
+    {"Id":"1","Store_id":"1","Name":"Gabriel da Silva","Phone":"83912345678","Adress":"Rua Brasilia,339","City":"Joao Pessoa","State":"Paraiba","Neighborhood":"Altiplano","Zip code":"58046370","Country":"Brazil"},
+    {"Id":"2","Store_id":"1","Name":"Joao Santos","Phone":"83912345678","Adress":"Avenida Ministro Jos\u00e9 Am\u00e9rico de Almeida,398","City":"Joao Pessoa","State":"Paraiba","Neighborhood":"Cabo Branco","Zip code":"58045135","Country":"Brazil"},
+    {"Id":"3","Store_id":"1","Name":"Joelison Pereira","Phone":"83912345678","Adress":"Rua Afonso Campos, 3887","City":"Joao Pessoa","State":"Paraiba","Neighborhood":"Centro","Zip code":"58013380","Country":"Brazil"},
+    {"Id":"4","Store_id":"1","Name":"Mauricio Souza","Phone":"83912345678","Adress":"Rua Ant\u00f4nio Teot\u00f4nio,510","City":"Joao Pessoa","State":"Paraiba","Neighborhood":"Cristo Redentor","Zip code":"58071620","Country":"Brazil"}
+]

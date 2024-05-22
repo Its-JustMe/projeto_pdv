@@ -1,0 +1,7 @@
+[
+    {"Id":"1","Store_id":"1","Name":"Seda Zomo Alfafa","Photo":"https:\/\/images.tcdn.com.br\/img\/img_prod\/952861\/seda_zomo_slim_alfafa_king_size_un_29019_1_5da7dc10e2822f84e707d16819fca871.jpg","Price":"5.00","CostPrice":"2.45","Stock":"10","Category":"Sedas","Brand":"Zomo"},
+    {"Id":"2","Store_id":"1","Name":"Seda Papelito Longa","Photo":"https:\/\/images.tcdn.com.br\/img\/img_prod\/952861\/seda_papelito_tradicional_king_size_longa_un_25118_1_e6bc3f7de674c7012a0788a917f604e3.jpg","Price":"5.00","CostPrice":"2.34","Stock":"9","Category":"Sedas","Brand":"Papelito"},
+    {"Id":"3","Store_id":"1","Name":"Seda LRC Brown","Photo":"https:\/\/images.tcdn.com.br\/img\/img_prod\/952861\/seda_lion_rolling_circus_unbleached_king_size_display_com_50_13666_2_93d9d17c33bf8fbae10b02af6c2d2266.jpg","Price":"8.00","CostPrice":"4.24","Stock":"50","Category":"Sedas","Brand":"Lion Rolling Circus"},
+    {"Id":"4","Store_id":"1","Name":"Seda Zomo Pink","Photo":"https:\/\/images.tcdn.com.br\/img\/img_prod\/952861\/seda_zomo_perfect_pink_king_size_un_21780_1_0549dcbb51af2c609f4ec73ad9b3277d.jpg","Price":"4.00","CostPrice":"1.23","Stock":"25","Category":"Sedas","Brand":"Zomo"},
+    {"Id":"5","Store_id":"1","Name":"Seda Smoking Deluxe","Photo":"https:\/\/images.tcdn.com.br\/img\/img_prod\/952861\/seda_smoking_deluxe_king_size_un_7675_1_03e42ca96ea66a8a0e600098fcacb28e.jpg","Price":"8.00","CostPrice":"5.43","Stock":"50","Category":"Sedas","Brand":"Smoking"}
+]

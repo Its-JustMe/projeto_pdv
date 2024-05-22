@@ -23,11 +23,11 @@
     overflow: hidden;
     padding: 4px;
 }
-.client_container {
+.user_container {
     padding: .4em;
     min-width: 20%;
 }
 
-.client_space {
+.user_space {
     gap: 1em;
 }

@@ -1,12 +1,12 @@
 import { Chart } from "./Chart.js";
-import { attatchMobileEvents } from "./interactions.js";
+import { attatchMobileEvents } from "../modules/interactions.js";
 
 /** Classe responsável por lidar com os dados dos produtos do JSON */
 export class Products extends Chart {
     /** Construtor da classe
      * @param {[{
      *    "Id": string;
-     *    "Client_id": string; 
+     *    "Store_id": string; 
      *    "Name": string;
      *    "Photo": string;
      *    "Price": string;
@@ -26,44 +26,17 @@ export class Products extends Chart {
         this.productsNavbar = document.querySelector('.products_navbar > .menu');
         /** Seção do carrinho de produtos */
         this.productChartSection = document.querySelector('.product_chart');
-
-        /** Itens do carrinho */
-        this.chartItems = [];
-
-        /** Taxa de entrega padrão */
-        this.deliveryFee = 10;
-
-        /** Inicialização de eventos */
-        this.initializeEventHandlers();
     }
 
     /** Inicializa os handlers de eventos */
-    initializeEventHandlers() {
-        document.getElementById('select_customer_btn').addEventListener('click', () => {
-            document.getElementById('customer_popup').style.display = 'block';
-        });
-
-        document.querySelector('#customer_popup .close_btn').addEventListener('click', () => {
-            document.getElementById('customer_popup').style.display = 'none';
-        });
-
-        window.addEventListener('click', (event) => {
-            if (event.target == document.getElementById('customer-popup')) {
-                document.getElementById('customer_popup').style.display = 'none';
-            }
-        });
-
-        // Removido daqui, pois agora está sendo adicionado diretamente na função getChartTotal
-        // document.querySelector('#delivery_fee').addEventListener('change', (event) => {
-        //     const newFee = Number(event.target.value);
-        //     this.updateChartTotal(newFee);
-        // });
-    }
+    /*initializeEventHandlers() {
+    
+    }*/
 
     /** Método que renderiza um card de produto 
      * @param { {
      *    "Id": string;
-     *    "Client_id": string; 
+     *    "Store_id": string; 
      *    "Name": string;
      *    "Photo": string;
      *    "Price": string;

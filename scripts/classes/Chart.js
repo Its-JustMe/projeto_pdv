@@ -1,7 +1,10 @@
 export class Chart {
     constructor() {
+        /** Itens do carrinho */
         this.chartItems = [];
-        this.deliveryFee = 10; // Valor padrão da taxa de entrega
+
+        /** Taxa de entrega padrão */
+        this.deliveryFee = 0;
     }
 
     /** Método que atualiza os itens do carrinho */
@@ -25,7 +28,6 @@ export class Chart {
         }
 
         this.getChartTotal();
-        this.attachInputEventHandlers();
     }
 
     /** Método que adiciona um produto específico ao carrinho 
@@ -79,9 +81,22 @@ export class Chart {
         this.chartItems.length > 0 
         ? 
             `
-            <p>
-                <b>${totalItems} Itens</b>
-            </p>
+            <div class="flex_column" style="gap: .5em">
+                <p>
+                    <b>${totalItems} Itens</b>
+                </p>
+                <p>
+                    <button class="popup_btn flex_row">
+                        <i class="fa-regular fa-note-sticky"></i>
+                        <span>Observações</span>
+                    </button>
+                </p>
+                <p>
+                    <button class="popup_btn flex_row">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>Informações pedido</span>
+                    </button>
+            </div>
 
             <div id="chart_info" class="flex_column">
                 <p>
@@ -89,10 +104,8 @@ export class Chart {
                     <b>R$ ${subtotal.toFixed(2)}</b>
                 </p>
                 <p>
-                    <b style="color: var(--tertiary-color)">Entrega: R$</b>
-                    <b>
-                        <input type="number" name="fee" class="qtd_product fee" style="margin-left: 10px;" value="${this.deliveryFee}" min="1">
-                    </b>
+                    <b style="color: var(--tertiary-color)">Entrega: </b>
+                    <b>R$ ${this.deliveryFee.toFixed(2)}</b>
                 </p>
                 <p>
                     <b style="color: var(--tertiary-color)">Total:</b> 
@@ -102,6 +115,7 @@ export class Chart {
             `
         : '';
 
+        this.attachInputEventHandlers();
         this.attachInputFeeHandler();
     }
 
