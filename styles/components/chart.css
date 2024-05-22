@@ -3,7 +3,7 @@
     background-color: #fff;
 
     width: 30vw;
-    min-height: 50vh;
+    min-height: 55vh;
 
     overflow-y: auto;
 
@@ -77,7 +77,7 @@
     flex-wrap: wrap;
     gap: .5em;
 
-    min-height: 15vh;
+    min-height: 17vh;
     border-top: 1px solid #eee;
     padding-top: 1em;
     font-size: calc(var(--text-size) - .2em)
