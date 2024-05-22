@@ -10,7 +10,7 @@ export function navbarHandler(menuBtn) {
         navbar.classList.remove('shown');
 
         root.style.setProperty('--navbar-width', '6vw');
-        root.style.setProperty('--main-section-width', '58vw');
+        root.style.setProperty('--main-section-width', '55vw');
         root.style.setProperty('--header-width', '94.5vw');
     } else if (!navbar.classList.contains('shown') && window.innerWidth > 768) {
         menuBtn.classList.add('active');
