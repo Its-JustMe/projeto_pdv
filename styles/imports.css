@@ -5,6 +5,6 @@
 @import './components/navbar.css';
 @import './components/products.css';
 @import './components/chart.css';
-@import './components/client_popup.css';
+@import './components/popups/customer_popup.css';
 @import './components/responsive/mobile.css';
 @import './components/responsive/desktop.css';

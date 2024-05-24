@@ -50,7 +50,7 @@ export class Products extends Chart {
      */
     renderProductCard(product, count) {
         return `
-            <div class="product_card flex_column" id="${product.Id}-${count}" data-id="${product.Id}" data-name="${product.Name}" data-price="${product.Price}" data-category="${product.Category}">
+            <div class="product_card flex_column" id="${product.Id}-${count}" data-stock="${product.Stock}" data-id="${product.Id}" data-name="${product.Name}" data-price="${product.Price}" data-category="${product.Category}">
                 <h2 class="subheading category">${product.Category}</h2>
                 <img src="${product.Photo}" alt="Foto de ${product.Name}" class="product_img">
                 <p class="product_name">
@@ -71,6 +71,7 @@ export class Products extends Chart {
      *  quantity: number;
      *  productId: string;
      *  uniqueId: string;
+     *  maxQuantity: string
      * } }  retorna um objeto com as informações do produto ou null
      */
     findProductById(id) {
@@ -83,7 +84,8 @@ export class Products extends Chart {
                price: unitPrice,
                quantity: 1,
                productId: productCard.dataset.id,
-               uniqueId: productCard.id
+               uniqueId: productCard.id,
+               maxQuantity: productCard.dataset.stock
            };
         }
     }

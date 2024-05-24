@@ -15,7 +15,7 @@ export class Chart {
             `
             <div class="selected_product flex_row">
                 <div class="product_info_container">
-                    <input type="number" name="${product.name}" class="qtd_product" id="${product.uniqueId}" value="${product.quantity}" min="1">
+                    <input type="number" name="${product.name}" class="qtd_product" id="${product.uniqueId}" value="${product.quantity}" min="1" max="${product.maxQuantity}">
                 </div>
                 <div class="product_info_container">
                     <p>${product.name}</p>
@@ -76,7 +76,7 @@ export class Chart {
         const subtotal = this.chartItems.reduce((acc, product) => acc + product.price, 0);
         const fee = this.deliveryFee;
         const total = subtotal + fee;
-
+    
         document.querySelector('.chart_items').innerHTML =
         this.chartItems.length > 0 
         ? 
@@ -86,18 +86,18 @@ export class Chart {
                     <b>${totalItems} Itens</b>
                 </p>
                 <p>
-                    <button class="popup_btn flex_row">
+                    <button id="obs_popup_btn" class="popup_btn flex_row">
                         <i class="fa-regular fa-note-sticky"></i>
                         <span>Observações</span>
                     </button>
                 </p>
                 <p>
-                    <button class="popup_btn flex_row">
+                    <button id="info_popup_btn" class="popup_btn flex_row">
                         <i class="fa-solid fa-circle-info"></i>
                         <span>Informações pedido</span>
                     </button>
             </div>
-
+    
             <div id="chart_info" class="flex_column">
                 <p>
                     <b style="color: var(--tertiary-color)">Subtotal:</b>
@@ -114,10 +114,12 @@ export class Chart {
             </div>
             `
         : '';
-
+    
         this.attachInputEventHandlers();
         this.attachInputFeeHandler();
+        this.attachButtonsEventHandlers(); 
     }
+    
 
     /** Método que ativa os handlers dos inputs de quantidade de itens de produtos do carrinho */
     attachInputFeeHandler() {
@@ -144,5 +146,22 @@ export class Chart {
                 this.changeProductQuantity(newQuantity, productId);
             });
         });
+
+        document.querySelector('#obs_popup_btn').addEventListener('click', () => console.log('Teste'))
     }
+
+    attachButtonsEventHandlers() {
+
+        document.querySelectorAll('.popup_btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (document.querySelector('#obs_button').classList.contains('shown')) {
+                    document.querySelector('.popup#obs_popup').classList.remove('shown')
+                } else {
+                    document.querySelector('.popup#obs_popup').classList.add('shown')
+                }
+                
+            })
+        })
+    }
+    
 }
