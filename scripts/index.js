@@ -15,6 +15,8 @@ import { Customers } from "./classes/Customers.js";
         products.getMenuCategories();
         products.getAllProducts();
 
+        customers.getCustomers();
+
         const menuItems = products.productsNavbar.children;
 
         for (let item of menuItems) {

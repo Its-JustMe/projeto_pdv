@@ -171,53 +171,59 @@
                         </select>
                     </div>
 
-                    <div class="input_container flex_row">
+                    <div class="input_container flex_row" style="justify-content: center;">
                         <div class="input_container flex_column">
                             <label for="delivery_fee">
                                 Custo:
                             </label>
-                            <input type="text" name="deliveryFee" id="delivery_fee" placeholder="R$ 10,00">
+                            <input class="form_input" type="text" name="deliveryFee" id="delivery_fee" placeholder="R$ 10,00">
                         </div>
 
                         <div class="input_container flex_column">
                             <label for="customer_cep">
                                 CEP:
                             </label>
-                            <input type="text" name="cep" id="customer_cep" placeholder="58270-337">
+                            <input class="form_input" type="text" name="cep" id="customer_cep" placeholder="58270-337">
                         </div>
                     </div>
 
-                    <div class="input_container flex_column">
-                        <label for="customer_phone">
-                            Telefone
-                        </label>
-                        <input type="text" name="phone" id="customer_phone" placeholder="(83) 9 0000-0000">
+                    <div class="input_container flex_row">
+                        <div class="input_container flex_column">
+                            <label for="customer_phone">
+                                Telefone
+                            </label>
+                            <input class="form_input" type="text" name="phone" id="customer_phone" placeholder="(83) 9 0000-0000">
+                        </div>
+                        <div class="input_container flex_column">
+                            <label for="customer_complement">
+                                Complemento:
+                            </label>
+                            <input class="form_input" type="text" name="compliment" id="customer_compliment" placeholder="58270-337">
+                        </div>
                     </div>
-
-                    <div class="input_container flex_column">
-                        <label for="customer_complement">
-                            Complemento:
-                        </label>
-                        <input type="text" name="compliment" id="customer_compliment" placeholder="58270-337">
-                    </div>
-                </div>
 
                     <div class="input_container flex_column">
                         <label for="name">
                             Nome:
                         </label>
 
-                        <input type="text" name="customer_name" id="name">
+                        <input class="form_input" type="text" name="customer_name" id="name" placeholder="Seu nome">
                     </div>
 
                     <div class="input_container flex_column">
                         <label for="address">
                             Endereço:
                         </label>
-                        <input type="text" name="customer_address" id="address" placeholder="Av. Brasil, 387">
+                        <input class="form_input" type="text" name="customer_address" id="address" placeholder="Av. Brasil, 387">
+                    </div>
+
+                    <div class="input_container flex_row">
+                        <input type="reset" class="button button_form button_clear" value="Limpar">
+                        <input type="button" class="button button_form button_finish" value="Salvar">
                     </div>
                 </form>
             </article>
+        </div>
         </div>
     </div>
 
