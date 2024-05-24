@@ -121,7 +121,7 @@
         </article>
     </section>
 
-    <!--<div id="customer_popup" class="popup">
+    <div class="popup customer" id="customer">
         <div class="popup_content">
             <span class="close_btn">&times;</span>
 
@@ -132,31 +132,91 @@
                     
                 </div>
             </article>
-    </div>-->
+        </div>
+    </div>
 
-    <!--<div id="info_popup" class="popup">
+    <div class="popup obs" id="obs">
         <div class="popup_content">
             <span class="close_btn">&times;</span>
 
             <article class="flex_column">
-                <h3 class="subheading">Selecione o cliente</h3>
+                <h3 class="subheading">Observações do pedido (opcional)</h3>
 
-                <div class="customer_grid">
-                </div>
+                <form class="obs_form flex_column" name="observation">
+                    <textarea class="obs_text" name="obsText" placeholder="Insira suas observações aqui."></textarea>
+                    <div class="flex_row">
+                        <button class="button_finish button_save">Salvar</button>
+                    </div>
+                </form>
             </article>
         </div>
-    </div>-->
+    </div>
 
-    <div id="obs_popup" class="popup">
+    <div class="popup info" id="info">
         <div class="popup_content">
-            <span class="close_btn">&times;</span>
+            <span class="close_btn">
+                &times;
+            </span>
 
             <article class="flex_column">
-                <h3 class="subheading">Observações do Pedido</h3>
+                <h3 class="subheading">Informações de Envio</h3>
 
-                <div class="customer_grid">
-                    <!-- Exibição dos clientes -->
+                <form class="info_form flex_column">
+                    <div class="input_container flex_column">
+                        <label for="delivery_option">
+                            Qual o tipo de envio?
+                        </label>
+                        <select name="deliveryOption" id="delivery_option">
+                            <option value="Motoboy">Motoboy</option>
+                        </select>
+                    </div>
+
+                    <div class="input_container flex_row">
+                        <div class="input_container flex_column">
+                            <label for="delivery_fee">
+                                Custo:
+                            </label>
+                            <input type="text" name="deliveryFee" id="delivery_fee" placeholder="R$ 10,00">
+                        </div>
+
+                        <div class="input_container flex_column">
+                            <label for="customer_cep">
+                                CEP:
+                            </label>
+                            <input type="text" name="cep" id="customer_cep" placeholder="58270-337">
+                        </div>
+                    </div>
+
+                    <div class="input_container flex_column">
+                        <label for="customer_phone">
+                            Telefone
+                        </label>
+                        <input type="text" name="phone" id="customer_phone" placeholder="(83) 9 0000-0000">
+                    </div>
+
+                    <div class="input_container flex_column">
+                        <label for="customer_complement">
+                            Complemento:
+                        </label>
+                        <input type="text" name="compliment" id="customer_compliment" placeholder="58270-337">
+                    </div>
                 </div>
+
+                    <div class="input_container flex_column">
+                        <label for="name">
+                            Nome:
+                        </label>
+
+                        <input type="text" name="customer_name" id="name">
+                    </div>
+
+                    <div class="input_container flex_column">
+                        <label for="address">
+                            Endereço:
+                        </label>
+                        <input type="text" name="customer_address" id="address" placeholder="Av. Brasil, 387">
+                    </div>
+                </form>
             </article>
         </div>
     </div>

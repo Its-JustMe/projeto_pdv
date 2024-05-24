@@ -168,21 +168,25 @@
 
 .popup {
     display: none;
+    z-index: 333;
 
     width: 55vw;
     height: 50vh;
 
     position: fixed;
-        left: 20%;
-        top: 20%;
+        left: 50%;
+        top: 50%;
+    transform: translate(-50%, -50%);
     background-color: var(--secondary-color);
     border-radius: 8px;
     z-index: 1000;
     box-shadow: 2px 2px 10px #00000074;
 }
-.popup.shown{
+
+.popup.tt {
     display: block;
 }
+
 .popup_content {
     padding: 20px;
 }

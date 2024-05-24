@@ -1,3 +1,7 @@
+.customer {
+    width: 75vw;
+}
+
 .close_btn {
     float: right;
     cursor: pointer;

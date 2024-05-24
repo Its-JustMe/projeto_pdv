@@ -51,3 +51,7 @@ export function attatchMobileEvents () {
             : document.querySelector('.product_chart').classList.add('shonw')
     })
 }
+
+export function closePopup (popupClass) {
+    document.querySelector(`.popup.${popupClass}`).style.display = 'none';
+}

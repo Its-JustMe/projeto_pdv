@@ -6,5 +6,7 @@
 @import './components/products.css';
 @import './components/chart.css';
 @import './components/popups/customer_popup.css';
+@import './components/popups/obs_popup.css';
+@import './components/popups/info_popup.css';
 @import './components/responsive/mobile.css';
 @import './components/responsive/desktop.css';

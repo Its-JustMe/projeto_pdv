@@ -86,15 +86,15 @@ export class Chart {
                     <b>${totalItems} Itens</b>
                 </p>
                 <p>
-                    <button id="obs_popup_btn" class="popup_btn flex_row">
+                    <button id="obs" class="popup_btn flex_row">
                         <i class="fa-regular fa-note-sticky"></i>
                         <span>Observações</span>
                     </button>
                 </p>
                 <p>
-                    <button id="info_popup_btn" class="popup_btn flex_row">
+                    <button id="info" class="popup_btn flex_row">
                         <i class="fa-solid fa-circle-info"></i>
-                        <span>Informações pedido</span>
+                        <span>Informações envio</span>
                     </button>
             </div>
     
@@ -146,22 +146,16 @@ export class Chart {
                 this.changeProductQuantity(newQuantity, productId);
             });
         });
-
-        document.querySelector('#obs_popup_btn').addEventListener('click', () => console.log('Teste'))
     }
 
     attachButtonsEventHandlers() {
-
         document.querySelectorAll('.popup_btn').forEach(btn => {
+            let popupName = btn.id;
+            console.log(document.querySelector(`.popup.${popupName}`));
             btn.addEventListener('click', () => {
-                if (document.querySelector('#obs_button').classList.contains('shown')) {
-                    document.querySelector('.popup#obs_popup').classList.remove('shown')
-                } else {
-                    document.querySelector('.popup#obs_popup').classList.add('shown')
-                }
-                
+                document.querySelector(`.${popupName}`).style.display = 'block';
             })
-        })
+        });
     }
     
 }

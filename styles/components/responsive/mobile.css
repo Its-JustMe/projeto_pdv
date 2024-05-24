@@ -36,14 +36,15 @@
     }
 
     .product_chart {
-        width: 60vw;
+        width: 90vw;
+        z-index: 333;
         opacity: 0;
         margin-top: 3.1em;
 
         position: fixed;
-            top: -10%;
+            top: -20%;
             left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -60%);
     }
 
     .product_chart.shown {
@@ -55,5 +56,9 @@
 
     .top_chart_elements > .close_popup {
         opacity: 1;
+    }
+
+    .info, .obs, .customer {
+        width: 80vw;
     }
 }

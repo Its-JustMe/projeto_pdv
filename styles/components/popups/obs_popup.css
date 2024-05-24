@@ -1,0 +1,24 @@
+.obs {
+    width: 35vw;
+}
+
+.obs_form {
+    gap: 1.5em
+}
+
+.obs_text {
+    border: 1px solid #000;
+    border-radius: 10px;
+    height: 20vh;
+    resize: none;
+    padding: 8px;
+}
+
+.button_save {
+    width: 150px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 4px;
+    transition: background .5s, color .5s;
+}

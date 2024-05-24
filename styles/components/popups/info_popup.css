@@ -1,0 +1,8 @@
+.info {
+    width: 35vw;
+    min-height: 70vh;
+}
+
+.info .subheading {
+    text-align: center;
+}

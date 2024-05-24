@@ -35,16 +35,18 @@ import { Customers } from "./classes/Customers.js";
         document.querySelector('.button_clear').addEventListener('click', () => products.clearChartSection());
 
         document.getElementById('select_customer_btn').addEventListener('click', () => {
-            document.getElementById('customer_popup').style.display = 'block';
+            document.querySelector('.popup.customer').style.display = 'block';
         });
 
-        document.querySelector('#customer_popup .close_btn').addEventListener('click', () => {
-            document.getElementById('customer_popup').style.display = 'none';
-        });
+        document.querySelectorAll('.popup').forEach(popup => {
+            const popupName = popup.id;
+
+            document.querySelector(`.popup.${popupName} .close_btn`).onclick = () => interactions.closePopup(popupName)
+        })
 
         window.addEventListener('click', (event) => {
-            if (event.target == document.getElementById('customer-popup')) {
-                document.getElementById('customer_popup').style.display = 'none';
+            if (event.target == document.querySelector('.popup.customer')) {
+                document.querySelector('.popup.customer').style.display = 'none';
             }
         });
     });
