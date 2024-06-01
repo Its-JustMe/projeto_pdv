@@ -2,6 +2,7 @@ import * as interactions from "./modules/interactions.js";
 import { Products } from "./classes/Products.js";
 import { jsonRequest } from "./modules/jsonRequest.js";
 import { Customers } from "./classes/Customers.js";
+import { checkoutHandler } from "./modules/checkout.js";
 
 (function () {
     document.addEventListener('DOMContentLoaded', async function () {
@@ -16,6 +17,7 @@ import { Customers } from "./classes/Customers.js";
         products.getAllProducts();
 
         customers.getCustomers();
+        customers.changeSelectedCustomer();
 
         const menuItems = products.productsNavbar.children;
 
@@ -44,12 +46,16 @@ import { Customers } from "./classes/Customers.js";
             const popupName = popup.id;
 
             document.querySelector(`.popup.${popupName} .close_btn`).onclick = () => interactions.closePopup(popupName)
-        })
-
-        window.addEventListener('click', (event) => {
-            if (event.target == document.querySelector('.popup.customer')) {
-                document.querySelector('.popup.customer').style.display = 'none';
-            }
         });
+
+        document.querySelector('#checkout').addEventListener('click', () => {
+            checkoutHandler(customers.selectedCustomer, products.chartTotal);
+        });
+
+        document.querySelector('#delivery_info_form').addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            document.querySelector('.popup.info').style.display = 'none';
+            products.setDeliveryFeeValue(Number(this.delivery_fee.value));
+        })
     });
 })();

@@ -2,6 +2,8 @@ export class Chart {
     constructor() {
         /** Itens do carrinho */
         this.chartItems = [];
+        /**Valor total do carrinho */
+        this.chartTotal = 0;
 
         /** Taxa de entrega padrão */
         this.deliveryFee = 0;
@@ -46,6 +48,7 @@ export class Chart {
         while(this.chartItems.length) {
             this.chartItems.pop();
         }
+        this.deliveryFee = 0;
         this.getChartTotal();
     }
 
@@ -70,12 +73,18 @@ export class Chart {
         this.updateChartItems();
     }
 
+    setDeliveryFeeValue (value=0) {
+        this.deliveryFee = value;
+        this.getChartTotal();
+    }
+
     /** Método que calcula e exibe o total do carrinho, incluindo a taxa de balcão se aplicável */
     getChartTotal() {
         const totalItems = this.chartItems.reduce((acc, product) => acc + product.quantity, 0);
         const subtotal = this.chartItems.reduce((acc, product) => acc + product.price, 0);
         const fee = this.deliveryFee;
         const total = subtotal + fee;
+        this.chartTotal = total;
     
         document.querySelector('.chart_items').innerHTML =
         this.chartItems.length > 0 
@@ -86,13 +95,13 @@ export class Chart {
                     <b>${totalItems} Itens</b>
                 </p>
                 <p>
-                    <button id="obs" class="popup_btn flex_row">
+                    <button id="obs" class="popup_btn popup_trigger flex_row">
                         <i class="fa-regular fa-note-sticky"></i>
                         <span>Observações</span>
                     </button>
                 </p>
                 <p>
-                    <button id="info" class="popup_btn flex_row">
+                    <button id="info" class="popup_btn popup_trigger flex_row">
                         <i class="fa-solid fa-circle-info"></i>
                         <span>Informações envio</span>
                     </button>
@@ -149,7 +158,7 @@ export class Chart {
     }
 
     attachButtonsEventHandlers() {
-        document.querySelectorAll('.popup_btn').forEach(btn => {
+        document.querySelectorAll('.popup_trigger').forEach(btn => {
             let popupName = btn.id;
             console.log(document.querySelector(`.popup.${popupName}`));
             btn.addEventListener('click', () => {

@@ -1,13 +1,17 @@
+import { closePopup } from "../modules/interactions.js";
+import { updateFormData } from "../modules/validations.js";
+
 export class Customers {
     constructor (data) {
         this.data = data;
+        this.selectedCustomer = null;
 
         this.allCustomers = document.querySelector('.customer_grid');
     }
 
     renderCustomerInfo (customer) {
         return `
-        <div class="customer_container">
+        <div class="customer_container" id="${customer.Id}">
             <div class="customer_space flex_row">
                 <div style="width: 35px; height: 35px; border-radius: 50%; background: linear-gradient(#257590, midnightblue);"></div>
                 <input type="hidden" id="${customer.Name}_${customer.Id}" name="${customer.Name}" value="${customer.Id}">
@@ -30,5 +34,20 @@ export class Customers {
         this.data.forEach(customer => {
             this.allCustomers.innerHTML += this.renderCustomerInfo(customer);
         })
+    }
+
+    changeSelectedCustomer () {
+        document.querySelectorAll('.customer_container').forEach(item => {
+            item.addEventListener('click', () => {
+                var obj = this.data.find(data => data.Id === item.id);
+                this.selectedCustomer = obj;
+
+                const deliveryInfoForm = document.querySelector('#delivery_info_form');
+                updateFormData(deliveryInfoForm, this.selectedCustomer);
+
+                closePopup('customer');
+            });
+        });
+        
     }
 }
