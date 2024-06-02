@@ -1,4 +1,4 @@
-export function checkoutHandler (selectedCustomer, chartTotal) {
+export function checkoutHandler (selectedCustomer, chartTotal, observations) {
     const checkoutInfo = document.querySelector('.shopping_info');
 
     checkoutInfo.innerHTML = 
@@ -17,6 +17,13 @@ export function checkoutHandler (selectedCustomer, chartTotal) {
             <p>
                 <strong>Tipo de Entrega:</strong>
                 <span>Motoboy</span>
+            </p>
+
+            <p>
+                <strong>Observações:</strong>
+                <span>
+                    ${observations}
+                </span>
             </p>
 
             <form action="">

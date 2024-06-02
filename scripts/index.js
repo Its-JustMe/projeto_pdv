@@ -48,14 +48,23 @@ import { checkoutHandler } from "./modules/checkout.js";
             document.querySelector(`.popup.${popupName} .close_btn`).onclick = () => interactions.closePopup(popupName)
         });
 
-        document.querySelector('#checkout').addEventListener('click', () => {
-            checkoutHandler(customers.selectedCustomer, products.chartTotal);
+        let observations = 'Nenhuma';
+
+        document.querySelector('#obs_form').addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            document.querySelector('.popup.obs').style.display = 'none';
+
+            observations = this.obsText.value;
         });
 
         document.querySelector('#delivery_info_form').addEventListener('submit', function (ev) {
             ev.preventDefault();
             document.querySelector('.popup.info').style.display = 'none';
             products.setDeliveryFeeValue(Number(this.delivery_fee.value));
-        })
+        });
+
+        document.querySelector('#checkout').addEventListener('click', () => {
+            checkoutHandler(customers.selectedCustomer, products.chartTotal, observations);
+        });
     });
 })();
