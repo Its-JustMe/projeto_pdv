@@ -28,11 +28,6 @@ export class Products extends Chart {
         this.productChartSection = document.querySelector('.product_chart');
     }
 
-    /** Inicializa os handlers de eventos */
-    /*initializeEventHandlers() {
-    
-    }*/
-
     /** Método que renderiza um card de produto 
      * @param { {
      *    "Id": string;

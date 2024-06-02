@@ -40,6 +40,7 @@ export function changeActiveMenuItems (items, itemActive) {
     itemActive.classList.toggle('active');
 }
 
+/** Função que ativa eventos de interação para telas mobile */
 export function attatchMobileEvents () {
     document.querySelectorAll('.product_card').forEach(card => {
         card.addEventListener('click', () => document.querySelector('.product_chart').classList.add('shown'));
@@ -49,9 +50,12 @@ export function attatchMobileEvents () {
         document.querySelector('.product_chart').classList.contains('shown')
             ? document.querySelector('.product_chart').classList.remove('shown')
             : document.querySelector('.product_chart').classList.add('shonw')
-    })
+    });
 }
 
+/** Função que fecha os popups
+ * @param { string } popupClass String com o nome da classe do popup a ser fechado
+ */
 export function closePopup (popupClass) {
     document.querySelector(`.popup.${popupClass}`).style.display = 'none';
 }

@@ -3,11 +3,14 @@ import { Products } from "./classes/Products.js";
 import { jsonRequest } from "./modules/jsonRequest.js";
 import { Customers } from "./classes/Customers.js";
 import { checkoutHandler } from "./modules/checkout.js";
+import { validateForm } from "./modules/validations.js";
 
 (function () {
     document.addEventListener('DOMContentLoaded', async function () {
         const productsData = await jsonRequest('products');
         const customersData = await jsonRequest('customers');
+
+        const infoForm = document.querySelector('#delivery_info_form');
 
         const products = new Products(productsData);
         const customers = new Customers(customersData);
@@ -57,14 +60,19 @@ import { checkoutHandler } from "./modules/checkout.js";
             observations = this.obsText.value;
         });
 
-        document.querySelector('#delivery_info_form').addEventListener('submit', function (ev) {
+        infoForm.addEventListener('submit', function (ev) {
             ev.preventDefault();
-            document.querySelector('.popup.info').style.display = 'none';
-            products.setDeliveryFeeValue(Number(this.delivery_fee.value));
+            
+            if (validateForm(this)) {
+                document.querySelector('.popup.info').style.display = 'none';
+                products.setDeliveryFeeValue(Number(this.delivery_fee.value));
+            }
         });
 
         document.querySelector('#checkout').addEventListener('click', () => {
-            checkoutHandler(customers.selectedCustomer, products.chartTotal, observations);
+            checkoutHandler(customers.selectedCustomer, products.chartTotal, observations, infoForm);
         });
+
+        document.querySelector('.chart_popup_trigger').addEventListener('click', () => document.querySelector('.product_chart').classList.add('shown'));
     });
 })();

@@ -84,6 +84,10 @@
 
     z-index: -1;
 }
+
+.remove_item {
+    cursor: pointer;
+}
 .popup_btn::before {
     background-color: var(--tertiary-color-alt);
     width: 100%;

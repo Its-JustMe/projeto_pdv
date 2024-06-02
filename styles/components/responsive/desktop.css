@@ -2,4 +2,8 @@
     .header_first_container > .menu_icon_container {
         display: none;
     }
+
+    .chart_popup_trigger {
+        display: none;
+    }
 }

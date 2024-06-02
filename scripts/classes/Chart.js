@@ -16,8 +16,13 @@ export class Chart {
             document.querySelector('#chart').innerHTML += 
             `
             <div class="selected_product flex_row">
-                <div class="product_info_container">
-                    <input type="number" name="${product.name}" class="qtd_product" id="${product.uniqueId}" value="${product.quantity}" min="1" max="${product.maxQuantity}">
+                <div class="flex_row" style="gap: 1em; align-items: center">
+                    <span class="remove_item" data-id="${product.uniqueId}">
+                        &times;
+                    </span>
+                    <div class="product_info_container">
+                        <input type="number" name="${product.name}" class="qtd_product" id="${product.uniqueId}" value="${product.quantity}" min="1" max="${product.maxQuantity}">
+                    </div>
                 </div>
                 <div class="product_info_container">
                     <p>${product.name}</p>
@@ -30,6 +35,7 @@ export class Chart {
         }
 
         this.getChartTotal();
+        this.attachRemoveItemHandlers();
     }
 
     /** Método que adiciona um produto específico ao carrinho 
@@ -41,6 +47,14 @@ export class Chart {
             this.chartItems.push(product);
             this.updateChartItems();
         }
+    }
+
+    /** Método que remove um produto específico do carrinho
+     * @param { string } uniqueId Identificador único do produto no carrinho
+    */
+    removeProductFromChart(uniqueId) {
+        this.chartItems = this.chartItems.filter(item => item.uniqueId !== uniqueId);
+        this.updateChartItems();
     }
 
     /** Método que limpa o atributo chartItems */
@@ -157,14 +171,24 @@ export class Chart {
         });
     }
 
+    /** Método que ativa eventos para remover itens do carrinho */
+    attachRemoveItemHandlers() {
+        document.querySelectorAll('.remove_item').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const uniqueId = btn.getAttribute('data-id');
+                this.removeProductFromChart(uniqueId);
+            });
+        });
+    }
+
+    /** Método que ativa eventos de botões de eventos de popup */
     attachButtonsEventHandlers() {
         document.querySelectorAll('.popup_trigger').forEach(btn => {
             let popupName = btn.id;
-            console.log(document.querySelector(`.popup.${popupName}`));
+
             btn.addEventListener('click', () => {
                 document.querySelector(`.${popupName}`).style.display = 'block';
             })
         });
-    }
-    
+    }   
 }

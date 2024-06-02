@@ -10,3 +10,16 @@ body {
 .products, .menu_icon_container, .page_header, .carrinho {
     padding: 0.8em;
 }
+label {
+    font-weight: bold;
+}
+
+select {
+    text-align: center;
+    font-size: var(--text-size);
+    background-color: var(--tertiary-color);
+    color: var(--secondary-text-color);
+    border-radius: 4px;
+    padding: 4px;
+    cursor: pointer;
+}

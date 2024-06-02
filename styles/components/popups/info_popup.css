@@ -42,20 +42,6 @@
     height: 100%;
 }
 
-label {
-    font-weight: bold;
-}
-
-#delivery_option {
-    text-align: center;
-    font-size: var(--text-size);
-    background-color: var(--tertiary-color);
-    color: var(--secondary-text-color);
-    border-radius: 4px;
-    padding: 4px;
-    cursor: pointer;
-}
-
 .button_form.button_clear:hover {
     background-color: var(--primary-color);
 }
