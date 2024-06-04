@@ -3,7 +3,7 @@ import { validateForm } from "./validations.js";
 export function checkoutHandler (selectedCustomer, chartTotal, observations, formInfo) {
     const checkoutInfo = document.querySelector('.shopping_info');
 
-    if (!validateForm()) {
+    if (!validateForm(document.querySelector('#delivery_info_form'))) {
         return false;
     }
 
