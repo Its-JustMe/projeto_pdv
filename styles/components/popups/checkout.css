@@ -1,0 +1,16 @@
+.checkout {
+    width: 30vw;
+    min-height: 40vh;
+}
+
+.customer {
+    width: 90%;
+}
+
+.checkout_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+
+    margin-top: 1em;
+}

@@ -1,13 +1,19 @@
+import { validateForm } from "./validations";
+
 export function checkoutHandler (selectedCustomer, chartTotal, observations, formInfo) {
     const checkoutInfo = document.querySelector('.shopping_info');
 
-    checkoutInfo.innerHTML = 
+    if (!validateForm()) {
+        return false;
+    }
+
+    return checkoutInfo.innerHTML = 
     `
         <div class="customer">
-            <h4 class="subheading">
+            <p>
                 <strong>Cliente:</strong>
                 <span>${selectedCustomer.Name}</span>
-            </h4>
+            </p>
                         
             <p>
                 <strong>Total:</strong>
@@ -25,8 +31,10 @@ export function checkoutHandler (selectedCustomer, chartTotal, observations, for
                     ${observations}
                 </span>
             </p>
+        </div>
 
-            <form action="">
+        <form class="checkout_form">
+            <div>
                 <label for="payment">
                     Forma de pagamento:
                 </label>
@@ -36,7 +44,11 @@ export function checkoutHandler (selectedCustomer, chartTotal, observations, for
                     <option value="Débito">Débito</option>
                     <option value="Crédito">Crédito</option>
                 </select>
-            </form>
-        </div>
+            </div>
+
+            <div class="flex_row">
+                <button class="button_finish button_save">Finalizar</button>
+            </div>
+        </form>
     `;
 }

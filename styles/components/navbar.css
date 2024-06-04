@@ -16,7 +16,7 @@
 }
 
 .navbar.shown {
-    --navbar-width: 20vw;
+    --navbar-width: 15vw;
     width: var(--navbar-width);
 }
 

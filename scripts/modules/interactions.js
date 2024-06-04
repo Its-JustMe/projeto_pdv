@@ -16,9 +16,9 @@ export function navbarHandler(menuBtn) {
         menuBtn.classList.add('active');
         navbar.classList.add('shown');
         
-        root.style.setProperty('--navbar-width', '20vw');
-        root.style.setProperty('--main-section-width', '45vw');
-        root.style.setProperty('--header-width', '80vw');
+        root.style.setProperty('--navbar-width', '15vw');
+        root.style.setProperty('--main-section-width', '50vw');
+        root.style.setProperty('--header-width', '85vw');
     } else if (navbar.classList.contains('shown') && window.innerWidth < 768) {
         menuBtn.classList.remove('active');
         navbar.classList.remove('shown');
