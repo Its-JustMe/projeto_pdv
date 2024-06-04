@@ -1,4 +1,4 @@
-import { validateForm } from "./validations";
+import { validateForm } from "./validations.js";
 
 export function checkoutHandler (selectedCustomer, chartTotal, observations, formInfo) {
     const checkoutInfo = document.querySelector('.shopping_info');
