@@ -54,7 +54,7 @@
 
     .checkout {
         width: 80vw;
-        height: 70vh;
+        min-height: 50vh;
     }
 
     .product_chart.shown {
