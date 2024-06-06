@@ -50,7 +50,8 @@ export class Products extends Chart {
                 <img src="${product.Photo}" alt="Foto de ${product.Name}" class="product_img">
                 <p class="product_name">
                     ${product.Name} <br>
-                    <i style="font-weight: normal">${product.Brand}</i>
+                    <i style="font-weight: normal">${product.Brand}</i> <br>
+                    <i style="font-weight: normal">Estoque: ${product.Stock}</i>
                 </p>
                 <p class="product_price">R$ ${product.Price}</p>
             </div>

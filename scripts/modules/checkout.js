@@ -1,5 +1,11 @@
 import { validateForm } from "./validations.js";
 
+/** Função que lida com o checkout 
+ * @param selectedCustomer Cliente do banco de dados (se selecionado)
+ * @param { number } chartTotal Valor total do carrinho 
+ * @param { string } observations Campo de Observações de Pedido
+ * @param formInfo Dados do Formulário de Informações de Pedido
+*/
 export function checkoutHandler (selectedCustomer, chartTotal, observations, formInfo) {
     const checkoutInfo = document.querySelector('.shopping_info');
 
