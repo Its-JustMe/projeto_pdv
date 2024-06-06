@@ -4,15 +4,18 @@ export function checkoutHandler (selectedCustomer, chartTotal, observations, for
     const checkoutInfo = document.querySelector('.shopping_info');
 
     if (!validateForm(document.querySelector('#delivery_info_form'))) {
+        document.querySelector('.popup.checkout').style.display = 'none';
         return false;
     }
+
+    const customerName = selectedCustomer === null ? formInfo.name.value : selectedCustomer.Name;
 
     return checkoutInfo.innerHTML = 
     `
         <div class="customer">
             <p>
                 <strong>Cliente:</strong>
-                <span>${selectedCustomer.Name}</span>
+                <span>${customerName}</span>
             </p>
                         
             <p>
@@ -47,7 +50,7 @@ export function checkoutHandler (selectedCustomer, chartTotal, observations, for
             </div>
 
             <div class="flex_row">
-                <button class="button_finish button_save">Finalizar</button>
+                <button class="button_finish button_save finish_form_btn">Finalizar</button>
             </div>
         </form>
     `;

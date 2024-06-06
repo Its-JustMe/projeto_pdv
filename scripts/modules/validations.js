@@ -15,12 +15,16 @@ export function validateForm (form) {
     for (let field of formFields) {
         if (form[field].value === '') {
             alert('Campo vazio no formulário.');
+            document.querySelector('.popup.info').style.display = 'block';
+            form[field].classList.add('invalid');
             return false;
         }
     }
 
     if (form['customer_cep'].value.length < 9 || form['customer_cep'].value.length > 9) {
         alert('Campo CEP inválido.');
+        document.querySelector('.popup.info').style.display = 'block';
+        form['customer_cep'].classList.add('invalid');
         return false;
     }
 

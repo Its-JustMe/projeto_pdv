@@ -1,6 +1,7 @@
 .info {
     width: 35vw;
     min-height: 80vh;
+    z-index: 555;
 }
 
 .info .subheading {
@@ -10,6 +11,10 @@
 .info_form {
     gap: .8em;
     width: 100%;
+}
+
+.info_form input.invalid {
+    border-color: red;
 }
 
 .input_container {

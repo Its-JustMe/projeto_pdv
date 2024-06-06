@@ -14,3 +14,7 @@
 
     margin-top: 1em;
 }
+
+.finish_form_btn {
+    font-size: calc(var(--text-size) + .1em);
+}
