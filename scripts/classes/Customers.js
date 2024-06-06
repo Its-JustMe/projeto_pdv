@@ -9,6 +9,9 @@ export class Customers {
         this.allCustomers = document.querySelector('.customer_grid');
     }
 
+    /** Método que renderiza as informações de um determinado cliente do DB 
+     * @param customer Dados do cliente 
+    */
     renderCustomerInfo (customer) {
         return `
         <div class="customer_container" id="${customer.Id}">
@@ -30,12 +33,14 @@ export class Customers {
         `;
     }
 
+    /** Método que renderiza os dados dos clientes */
     getCustomers () {
         this.data.forEach(customer => {
             this.allCustomers.innerHTML += this.renderCustomerInfo(customer);
         })
     }
 
+    /** Método que seleciona um cliente */
     changeSelectedCustomer () {
         document.querySelectorAll('.customer_container').forEach(item => {
             item.addEventListener('click', () => {
@@ -47,7 +52,6 @@ export class Customers {
 
                 closePopup('customer');
             });
-        });
-        
+        });       
     }
 }
