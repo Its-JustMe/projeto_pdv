@@ -3,8 +3,20 @@
     min-height: 40vh;
 }
 
+.shopping_info {
+    gap: .5em;
+    justify-content: center;
+    align-items: center;
+}
+
 .customer {
     width: 90%;
+}
+
+.checkout_heading {
+    gap: .3em;
+    justify-content: center;
+    align-items: center;
 }
 
 .checkout_form {

@@ -7,8 +7,7 @@ export function updateFormData (form, customerData) {
 export function validateForm (form) {
     const formFields = [
         'delivery_option', 'delivery_fee',
-        'customer_cep', 'phone',
-        'name', 'address'
+        'phone', 'name', 'address'
     ];
 
     // Percorre todos os campos para verificar se estão vazios
@@ -21,7 +20,7 @@ export function validateForm (form) {
         }
     }
 
-    if (form['customer_cep'].value.length < 9 || form['customer_cep'].value.length > 9) {
+    if (form['customer_cep'].value !== '' && form['customer_cep'].value.length < 9 || form['customer_cep'].value.length > 9) {
         alert('Campo CEP inválido.');
         document.querySelector('.popup.info').style.display = 'block';
         form['customer_cep'].classList.add('invalid');

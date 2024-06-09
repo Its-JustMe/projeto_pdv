@@ -53,8 +53,8 @@
     }
 
     .checkout {
-        width: 80vw;
-        min-height: 50vh;
+        width: 75vw;
+        min-height: 70vh;
     }
 
     .product_chart.shown {
@@ -96,5 +96,11 @@
     }
     .chart_popup_trigger:hover {
         color: var(--tertiary-color-alt);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .checkout {
+        width: 90vw;
     }
 }

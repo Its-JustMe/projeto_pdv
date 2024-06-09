@@ -196,3 +196,7 @@
 .popup_content > article {
     gap: 2.5em;
 }
+
+.required_field.invalid {
+    color: #7f4747;
+}
