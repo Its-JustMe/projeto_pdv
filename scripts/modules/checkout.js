@@ -72,8 +72,6 @@ export function checkoutHandler(selectedCustomer = null, chartTotal, observation
             }
         };
 
-        console.log("Checkout Data JSON:", JSON.stringify(checkoutData));
-
         finishCheckout(checkoutData);
     });
 
@@ -100,7 +98,7 @@ export function checkoutHandler(selectedCustomer = null, chartTotal, observation
 */
 function finishCheckout(checkoutData) {
     // Enviando dados p/ database
-    fetch('./', {
+    fetch('https://', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
