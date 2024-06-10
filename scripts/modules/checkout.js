@@ -38,7 +38,7 @@ export function checkoutHandler(selectedCustomer = null, chartTotal, observation
             </h2>
         </div>
 
-        <form action="post" class="checkout_form subheading">
+        <form action="/checkout" method="post" class="checkout_form subheading">
             <div class="flex_column">
                 <label for="payment">
                     Forma de pagamento:
@@ -53,8 +53,8 @@ export function checkoutHandler(selectedCustomer = null, chartTotal, observation
             </div>
 
             <div class="flex_row" style="gap: 1em;">
-                <button class="button_finish button_save finish_form_btn">Finalizar</button>
-                <button class="button_finish button_save finish_form_btn cancel">Cancelar</button>
+                <button class="button_finish button_save finish_form_btn" type="submit">Finalizar</button>
+                <button class="button_finish button_save finish_form_btn cancel" type="button">Cancelar</button>
             </div>
         </form>
     `;
