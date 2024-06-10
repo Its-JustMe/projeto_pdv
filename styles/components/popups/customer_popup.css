@@ -1,7 +1,8 @@
 .customer {
-    width: 55vw;
+    width: 40vw;
     align-items: center;
     justify-content: center;
+    padding: 0;
 }
 
 .close_btn {
@@ -15,6 +16,7 @@
 
 .customer_grid {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 1.5em;
     flex-wrap: wrap;
