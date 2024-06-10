@@ -1,3 +1,4 @@
+import { closePopup } from "./interactions.js";
 import { validateForm } from "./validations.js";
 
 /** Função que lida com o checkout 
@@ -10,11 +11,11 @@ export function checkoutHandler(selectedCustomer = null, chartTotal, observation
     const checkoutInfo = document.querySelector('.shopping_info');
 
     if (!validateForm(document.querySelector('#delivery_info_form'))) {
-        return document.querySelector('.popup.checkout').style.display = 'none';
+        return closePopup('checkout');
     }
     if (chartTotal === 0 || formInfo.delivery_fee.value - chartTotal === 0) {
         alert('É preciso selecionar um produto para realizar uma compra!');
-        return document.querySelector('.popup.checkout').style.display = 'block';
+        return closePopup('checkout');
     }
 
     let customer = null;
