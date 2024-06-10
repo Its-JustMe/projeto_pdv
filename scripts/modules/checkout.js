@@ -99,7 +99,7 @@ export function checkoutHandler(selectedCustomer = null, chartTotal, observation
 */
 function finishCheckout(checkoutData) {
     // Enviando dados p/ database
-    fetch('https://', {
+    fetch('/checkout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
