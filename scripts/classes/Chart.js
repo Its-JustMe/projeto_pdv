@@ -1,4 +1,4 @@
-import { displayNotify } from "../modules/validations.js";
+import { displayNotify, isNumberKey } from "../modules/validations.js";
 
 export class Chart {
     constructor() {
@@ -9,6 +9,9 @@ export class Chart {
 
         /** Taxa de entrega padrão */
         this.deliveryFee = 0;
+
+        /** Desconto padrão */
+        this.discount = 0;
     }
 
     /** Método que atualiza os itens do carrinho */
@@ -88,6 +91,11 @@ export class Chart {
         for (let item of this.chartItems) {
             if (item.uniqueId === uniqueId) { 
                 item.quantity = value;
+                if (value < 1 || value > item.maxQuantity) {
+                    displayNotify('Quantidade inválida', 'Não é possível vender esta quantidade de produtos.', 'warning');
+                    item.quantity = 1;
+                    break;
+                }
                 item.price = item.unitPrice * item.quantity;
                 break;
             }
@@ -146,6 +154,11 @@ export class Chart {
                     <b>R$ ${this.deliveryFee.toFixed(2)}</b>
                 </p>
                 <p>
+                    <b style="color: var(--tertiary-color)">Desconto: </b>
+                    <b>R$ ${this.discount.toFixed(2)}</b>
+                </p>
+                <br>
+                <p>
                     <b style="color: var(--tertiary-color)">Total:</b> 
                     <b>R$ ${total.toFixed(2)}</b>
                 </p>
@@ -178,13 +191,24 @@ export class Chart {
     /** Método que ativa os handlers dos inputs de quantidade de itens de produtos do carrinho */
     attachInputEventHandlers() {
         document.querySelectorAll('input[type="number"]').forEach(input => {
-            input.addEventListener('change', () => {
+            input.addEventListener('keydown', (event) => {
+                if (!isNumberKey(event)) {
+                    event.preventDefault();
+                }
+            });
+
+            input.addEventListener('input', () => {
                 const productId = input.id;
-                const newQuantity = Number(input.value);
-                this.changeProductQuantity(newQuantity, productId);
+                const newQuantity = 1;
+                if (!isNaN(newQuantity)) {
+                    this.changeProductQuantity(newQuantity, productId);
+                } else {
+                    input.value = 1;
+                }
             });
         });
     }
+
 
     /** Método que ativa eventos para remover itens do carrinho */
     attachRemoveItemHandlers() {
