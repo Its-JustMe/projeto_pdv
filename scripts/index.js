@@ -3,17 +3,20 @@ import { Products } from "./classes/Products.js";
 import { jsonRequest } from "./modules/jsonRequest.js";
 import { Customers } from "./classes/Customers.js";
 import { checkoutHandler } from "./modules/checkout.js";
-import { validateForm } from "./modules/validations.js";
+import { displayNotify, validateForm } from "./modules/validations.js";
+import { Attendants } from "./classes/Attendant.js";
 
 (function () {
     document.addEventListener('DOMContentLoaded', async function () {
         const productsData = await jsonRequest('products');
         const customersData = await jsonRequest('customers');
+        const attendantsData = await jsonRequest('attendants');
 
         const infoForm = document.querySelector('#delivery_info_form');
 
         const products = new Products(productsData);
         const customers = new Customers(customersData);
+        const attendants = new Attendants(attendantsData)
 
         products.updateChartItems();
         products.getMenuCategories();
@@ -21,6 +24,9 @@ import { validateForm } from "./modules/validations.js";
 
         customers.getCustomers();
         customers.changeSelectedCustomer();
+
+        attendants.getAttendants();
+        attendants.changeSelectedAttendant();
 
         const menuItems = products.productsNavbar.children;
 
@@ -41,8 +47,10 @@ import { validateForm } from "./modules/validations.js";
 
         document.querySelector('.button_clear').addEventListener('click', () => products.clearChartSection());
 
-        document.getElementById('select_customer_btn').addEventListener('click', () => {
-            document.querySelector('.popup.customer').style.display = 'block';
+        document.querySelectorAll('.select_btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelector(`.popup.${this.id}`).style.display = 'block';
+            });
         });
 
         document.querySelectorAll('.popup').forEach(popup => {
@@ -69,8 +77,31 @@ import { validateForm } from "./modules/validations.js";
             }
         });
 
+        document.querySelector('#delivery_option').addEventListener('change', function () {
+            if (this.value !== 'Retirada na loja') {
+                document.querySelector('#delivery_required').style.visibility = 'visible';
+            } else {
+                document.querySelector('#delivery_required').style.visibility = 'hidden';
+            }
+        });
+
+        document.querySelectorAll('.form_input').forEach(input => {
+            input.addEventListener('change', function () {
+                if (this.classList.contains('invalid')) {
+                    this.classList.remove('invalid');
+                }
+            });
+        });
+
         document.querySelector('#checkout').addEventListener('click', () => {
-            checkoutHandler(customers.selectedCustomer, products.chartTotal, observations, infoForm);
+            if (products.chartItems.length === 0) {
+                displayNotify('Carrinho vazio', 'É necessário escolher ao menos um produto para prosseguir.', 'warning', 12000);
+                return;
+            }
+
+            document.querySelector('.popup.checkout').style.display = 'block';
+
+            checkoutHandler(customers.selectedCustomer, attendants.selectedAttendant, products.chartTotal, observations, infoForm);
         });
 
         document.querySelector('.chart_popup_trigger').addEventListener('click', () => document.querySelector('.product_chart').classList.add('shown'));

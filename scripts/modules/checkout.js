@@ -1,5 +1,5 @@
 import { closePopup } from "./interactions.js";
-import { validateForm } from "./validations.js";
+import { displayNotify, validateForm } from "./validations.js";
 
 /** Função que lida com o checkout 
  * @param selectedCustomer Cliente do banco de dados (se selecionado)
@@ -7,14 +7,17 @@ import { validateForm } from "./validations.js";
  * @param { string } observations Campo de Observações de Pedido
  * @param formInfo Dados do Formulário de Informações de Pedido
  */
-export function checkoutHandler(selectedCustomer = null, chartTotal, observations, formInfo) {
+export function checkoutHandler(selectedCustomer = null, selectedAttendant,chartTotal, observations, formInfo) {
     const checkoutInfo = document.querySelector('.shopping_info');
 
     if (!validateForm(document.querySelector('#delivery_info_form'))) {
         return closePopup('checkout');
     }
-    if (chartTotal === 0 || formInfo.delivery_fee.value - chartTotal === 0) {
-        alert('É preciso selecionar um produto para realizar uma compra!');
+
+    if (!selectedAttendant) {
+        displayNotify('Vendedor não selecionado', 'É necessário selecionar um vendedor para continuar.', 'warning');
+        document.querySelector('.popup.attendant').style.display = 'block';
+        
         return closePopup('checkout');
     }
 
@@ -49,7 +52,9 @@ export function checkoutHandler(selectedCustomer = null, chartTotal, observation
                     <option value="dinheiro" selected>Dinheiro</option>
                     <option value="debito">Cartão de Débito</option>
                     <option value="credito">Cartão de Crédito</option>
+                    <option value="credito">Cheque</option>
                     <option value="pix">PIX</option>
+                    <option value="credito">Outro</option>
                 </select>
             </div>
 
@@ -65,13 +70,17 @@ export function checkoutHandler(selectedCustomer = null, chartTotal, observation
 
         const checkoutData = {
             Customer: customer,
+            Attendant: selectedAttendant,
             OrderInformations: {
                 Total: chartTotal,
                 Observations: observations,
-                DeliveryFee: formInfo.delivery_fee.value,
                 PaymentMethod: this.payment_method.value
             }
         };
+
+        if (formInfo.delivery_fee.value !== '' && formInfo.delivery_fee.value !== '0') {
+            checkoutData.DeliveryFee = formInfo.delivery_fee.value;
+        }
 
         finishCheckout(checkoutData);
     });
@@ -91,7 +100,7 @@ export function checkoutHandler(selectedCustomer = null, chartTotal, observation
  *   OrderInformations: {
  *      Total: string;
  *      Observations: string;
- *      DeliveryFee: string;
+ *      DeliveryFee: string | null;
  *      PaymentMethod: string;
  *   }
  * } 

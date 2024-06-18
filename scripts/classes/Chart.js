@@ -1,3 +1,5 @@
+import { displayNotify } from "../modules/validations.js";
+
 export class Chart {
     constructor() {
         /** Itens do carrinho */
@@ -44,10 +46,16 @@ export class Chart {
     addProductToChart(id) {
         const product = this.findProductById(id);
         if (product) {
+            const productExists = this.chartItems.some(item => item.uniqueId === product.uniqueId);
+            if (productExists) {
+                displayNotify('Produto já selecionado', 'Produto já adicionado ao carrinho.', 'warning');
+                return;
+            }
             this.chartItems.push(product);
             this.updateChartItems();
         }
-    }
+}
+
 
     /** Método que remove um produto específico do carrinho
      * @param { string } uniqueId Identificador único do produto no carrinho
@@ -117,8 +125,15 @@ export class Chart {
                 <p>
                     <button id="info" class="popup_btn popup_trigger flex_row">
                         <i class="fa-solid fa-circle-info"></i>
-                        <span>Informações envio</span>
+                        <span>Informações pedido</span>
                     </button>
+                </p>
+                <p>
+                    <button id="discount" class="popup_btn popup_trigger flex_row">
+                        <i class="fa-solid fa-tag"></i>
+                        <span>Definir descontos</span>
+                    </button>
+                </p>
             </div>
     
             <div id="chart_info" class="flex_column">

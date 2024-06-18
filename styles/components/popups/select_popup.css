@@ -1,4 +1,4 @@
-.customer {
+.customer, .attendant {
     width: 40vw;
     align-items: center;
     justify-content: center;
@@ -16,27 +16,34 @@
 
 .customer_grid {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content:space-around;
+    align-items: flex-start;
     gap: 1.5em;
     flex-wrap: wrap;
     flex-basis: 30%;
 }
-.customer_container {
+
+.attendant_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    gap: 1em;
+}
+.customer_container, .attendant_container {
     cursor: pointer;
     border-radius: 4px;
     transition: background .5s;
     padding: 8px;
 }
-.customer_container:hover {
+.customer_container:hover, .attendant_container:hover {
     background-color: var(--tertiary-color-alt);
 }
 
-.customer_space {
+.customer_space, .attendant_space {
     gap: .8em;
 }
 
-.customer_phone {
+.customer_jsonInfo, .attendant_jsonInfo {
     align-items: center;
     justify-content: center;
     gap: .3em;

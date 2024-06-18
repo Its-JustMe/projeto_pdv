@@ -1,0 +1,42 @@
+[
+    {
+        "Id": "1",
+        "Name": "Vendedor 1",
+        "Phone": "83912345678",
+        "Email": "vendedor.um@teste.com",
+        "Position": "Sales Manager",
+        "Department": "Sales",
+        "Hire_date": "2020-01-15",
+        "Sales_Count": "110"
+    },
+    {
+        "Id": "2",
+        "Name": "Vendedor 2",
+        "Phone": "83912345678",
+        "Email": "vendedor.dois@teste.com",
+        "Position": "Sales Manager",
+        "Department": "Sales",
+        "Hire_date": "2019-03-22",
+        "Sales_Count": "150"
+    },
+    {
+        "Id": "3",
+        "Name": "Vendedor 3",
+        "Phone": "83912345678",
+        "Email": "vendedor.tres@teste.com",
+        "Position": "Sales Manager",
+        "Department": "Sales",
+        "Hire_date": "2018-01-15",
+        "Sales_Count": "250"
+    },
+    {
+        "Id": "4",
+        "Name": "Vendedor 4",
+        "Phone": "83912345678",
+        "Email": "vendedor.quatro@teste.com",
+        "Position": "Sales Manager",
+        "Department": "Sales",
+        "Hire_date": "2024-01-15",
+        "Sales_Count": "75"
+    }
+]

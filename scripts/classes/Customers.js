@@ -19,12 +19,12 @@ export class Customers {
                 <div style="width: 35px; height: 35px; border-radius: 50%; background: linear-gradient(#257590, midnightblue);"></div>
                 <input type="hidden" id="${customer.Name}_${customer.Id}" name="${customer.Name}" value="${customer.Id}">
                 <div class="customer_info">
-                    <span class="customer_name">
+                    <span class="customer_jsonInfo">
                         <b>${customer.Name}</b>
                     </span>
                     <br>
-                    <span id="customer_phone" class="customer_phone flex_row">
-                        <i class="fa-solid fa-phone"></i>
+                    <span id="customer_phone" class="customer_jsonInfo flex_row">
+                        <i class="fa-solid fa-phone" style="font-size: .8em"></i>
                         <span>${customer.Phone}</span>
                     </span>
                 </div>

@@ -8,6 +8,10 @@
     
     <!--Link CSS-->
     <link rel="stylesheet" href="./styles/index.css">
+    
+    <!-- CDN CSS Simple-Notify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.css" />
+    
     <title>Home - Ponto de Venda</title>
 </head>
 <body>
@@ -51,7 +55,7 @@
                     </div>
                 </a>
             </li>
-            <!--
+            
             <li class="menu_item">
                 <a href="#">
                     <div class="menu_item_container flex_row">
@@ -76,7 +80,6 @@
                     </div>
                 </a>
             </li>
-            -->
         </ul>
     </nav>
 
@@ -95,9 +98,14 @@
     <section class="product_chart text flex_column">
         <div class="top_chart_elements flex_row">
             <span class="close_popup">&times;</span>
-            <button class="subheading underline" id="select_customer_btn">
-                Selecionar cliente
-            </button>
+            <div class="buttons_container flex_column">
+                <button class="select_btn subheading underline" id="customer">
+                    Selecionar cliente
+                </button>
+                <button class="select_btn subheading underline" id="attendant">
+                    Selecionar vendedor
+                </button>
+            </div>
         </div>
 
         <div id="chart" class="chart flex_column">
@@ -114,7 +122,7 @@
                     <button class="button button_clear">
                         <i class="fa-regular fa-trash-can"></i>
                     </button>
-                    <button id="checkout" class="button button_finish popup_trigger flex_row">
+                    <button id="checkout" class="button button_finish flex_row">
                         <span>Finalizar</span>
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
@@ -161,7 +169,7 @@
             </span>
 
             <article class="flex_column">
-                <h3 class="subheading">Informações de Envio</h3>
+                <h3 class="subheading">Informações de Pedido</h3>
 
                 <form class="info_form flex_column" id="delivery_info_form">
                     <div class="input_container flex_column">
@@ -170,20 +178,22 @@
                             <span class="required_field">*</span>
                         </label>
                         <select name="deliveryOption" id="delivery_option">
+                            <option value="Retirada na loja">Retirada na loja</option>
+                            <option value="Entrega padrão">Entrega padrão</option>
                             <option value="Motoboy">Motoboy</option>
                             <option value="Correios">Correios</option>
                             <option value="Transportadora">Transportadora</option>
-                            <option value="Retirada na loja">Retirada na loja</option>
                             <option value="Entrega expressa">Entrega expressa</option>
-                            <option value="Entrega padrão">Entrega padrão</option>
                         </select>
                     </div>
 
                     <div class="input_container flex_row" style="justify-content: center;">
                         <div class="input_container flex_column">
                             <label for="delivery_fee">
-                                Custo de entrega:
-                                <span class="required_field">*</span>
+                                Taxa de entrega:
+                                <span class="required_field" id="delivery_required" style="visibility: hidden">
+                                    *
+                                </span>
                             </label>
                             <input class="form_input" type="text" name="deliveryFee" id="delivery_fee" placeholder="R$ 10,00">
                         </div>
@@ -238,6 +248,20 @@
         </div>
     </div>
 
+    <div class="popup attendant" id="attendant">
+        <div class="popup_content">
+            <span class="close_btn">&times;</span>
+
+            <article class="flex_column">
+                <h3 class="subheading">Selecionar Vendedor</h3>
+
+                <div class="attendant_grid flex_column">
+                    
+                </div>
+            </article>
+        </div>
+    </div>
+
     <div class="popup checkout" id="checkout">
         <div class="popup_content">
             <span class="close_btn">&times;</span>
@@ -258,5 +282,8 @@
 
     <!--Scripts-->
     <script type="module" src="./scripts/index.js"></script>
+
+    <!-- CDN JS Simple-Notify -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.min.js"></script>
 </body>
 </html
