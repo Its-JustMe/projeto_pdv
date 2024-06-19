@@ -44,10 +44,11 @@ function validateDeliveryFeeField (form) {
     if (form.delivery_option.value === 'Retirada na loja') {
         form.delivery_fee.value = 0.00;
         return true;
-    } else {
+    } else if (form.delivery_fee.value === '' || form.delivery_fee.value === "0") {
         displayNotify('Erro(s) no formulário', 'É necessário inserir um valor de entrega.', 'error');
         return false;
     }
+    return true;
 }
 
 export const displayNotify = function (toastTitle, toastText, statusType, duration = 8000) {

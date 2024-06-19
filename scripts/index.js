@@ -70,7 +70,6 @@ import { Attendants } from "./classes/Attendant.js";
 
         infoForm.addEventListener('submit', function (ev) {
             ev.preventDefault();
-            
             if (validateForm(this)) {
                 document.querySelector('.popup.info').style.display = 'none';
                 products.setDeliveryFeeValue(Number(this.delivery_fee.value));
