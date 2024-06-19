@@ -1,6 +1,20 @@
 import { closePopup } from "../modules/interactions.js";
 
+/** Classe responsável por controlar os vendedores */
 export class Attendants {
+    /**
+     * 
+     * @param {{
+     *   "Id": string,
+     *   "Name": string,
+     *   "Phone": string,
+     *  "Email": string,
+     *   "Position": string,
+     *   "Department": string,
+     *   "Hire_date": string,
+     *   "Sales_Count": string
+     * } } data Dados do JSON de vendedores 
+     */
     constructor (data) {
         this.data = data;
         this.selectedAttendant = null;

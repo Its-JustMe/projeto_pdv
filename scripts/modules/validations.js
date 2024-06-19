@@ -1,9 +1,27 @@
+/** Função que atualiza o formulário de informações de pedido com os dados de um cliente cadastrado 
+ * @param { HTMLFormElement } form Elemento Formulário
+ * @param { {
+     * "Id": string,
+* "Store_id": string,
+* "Name": string,
+* "Phone": string,
+* "Adress": string,
+* "City": string,
+* "State": string,
+* "Neighborhood": string,
+* "Zip code": string,
+* "Country": string
+* } } customerData Dados do cliente
+*/
 export function updateFormData (form, customerData) {
     form.name.value = customerData.Name;
     form.phone.value = customerData.Phone;
     form.address.value = customerData.Adress;
 }
 
+/** Função que lida com as validações dos formulários 
+ * @param { HTMLFormElement } form Elemento Formulário
+*/
 export function validateForm (form) {
     if (!isEmptyField(form) || !validateDeliveryFeeField(form)) {
         return false;
@@ -12,6 +30,9 @@ export function validateForm (form) {
     return true;
 }
 
+/** Função que valida campos vazios 
+ * @param { HTMLFormElement } form Elemento Formulário
+*/
 function isEmptyField (form) {
     const formFields = [
         'delivery_option', 'phone', 
@@ -40,6 +61,10 @@ function isEmptyField (form) {
     return true;
 }
 
+/** Função que valida o campo de taxa de entrega 
+ * @param { HTMLFormElement } form Elemento Formulário
+ * @returns { boolean }
+*/
 function validateDeliveryFeeField (form) {
     if (form.delivery_option.value === 'Retirada na loja') {
         form.delivery_fee.value = 0.00;
@@ -51,8 +76,16 @@ function validateDeliveryFeeField (form) {
     return true;
 }
 
+
+/** Função que usa a biblioteca Simple-Notify para disparar uma notificação do sistema 
+ * @param { string } toastTitle Título da notificação
+ * @param { string } toastText Descrição da notificação
+ * @param { string } statusType Status/Tipo de notificação ("warning", "error" ou "sucess")
+ * @param { number } duration Duração do popup da notificação (valor padrão = 8000 milissegundos)
+ * @returns { Notify }
+*/
 export const displayNotify = function (toastTitle, toastText, statusType, duration = 8000) {
-    new Notify({
+    return new Notify({
         status: statusType,
         title: toastTitle,
         text: toastText,

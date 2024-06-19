@@ -1,7 +1,23 @@
 import { closePopup } from "../modules/interactions.js";
 import { updateFormData } from "../modules/validations.js";
 
+/** Classe responsável por controlar os clientes cadastrados */
 export class Customers {
+    /**
+     * 
+     * @param {{
+     * "Id": string,
+     * "Store_id": string,
+     * "Name": string,
+     * "Phone": string,
+     * "Adress": string,
+     * "City": string,
+     * "State": string,
+     * "Neighborhood": string,
+     * "Zip code": string,
+     * "Country": string
+     * }} data Dados do JSON de clientes 
+     */
     constructor (data) {
         this.data = data;
         this.selectedCustomer = null;
