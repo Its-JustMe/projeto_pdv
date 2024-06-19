@@ -118,10 +118,10 @@ function finishCheckout(checkoutData) {
     .then(response => response.json())
     .then(data => {
         console.log('Ok:', data);
-        alert('Checkout concluído com sucesso!');
+        displayNotify('Checkout concluído!', 'Checkout realizado com sucesso.', 'sucess');
     })
     .catch((error) => {
         console.error('Erro:', error);
-        alert('Ocorreu um erro ao finalizar o checkout. Tente novamente.');
+        displayNotify('Erro: Falha no Checkout', 'Ocorreu um erro ao realizar o checkout. Tente novamente.', 'error');
     });
 }
