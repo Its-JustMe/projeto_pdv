@@ -65,13 +65,22 @@ function isEmptyField (form) {
  * @returns { boolean }
 */
 function validateDeliveryFeeField (form) {
-    if (form.delivery_option.value === 'Retirada na loja') {
+    form.delivery_fee.value = Number(form.delivery_fee.value.replace(',', '.'));
+
+    if (form.delivery_option.value === 'retirada') {
         form.delivery_fee.value = 0.00;
+
         return true;
-    } else if (!form.delivery_fee || form.delivery_fee.value === "0") {
-        displayNotify('Erro(s) no formulário', 'É necessário inserir um valor de entrega.', 'error');
+    } else if (!form.delivery_fee.value || form.delivery_fee.value === "0") {
+        displayNotify('Valor de taxa inválido', 'É necessário inserir um valor de entrega.', 'warning');
+        form.delivery_fee.focus();
+        return false;
+    } else if (isNaN(form.delivery_fee.value)) {
+        displayNotify('Valor de taxa inválido', 'Insira um valor válido para a taxa de entrega.', 'warning');
+        form.delivery_fee.focus();
         return false;
     }
+
     return true;
 }
 

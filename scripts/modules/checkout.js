@@ -6,8 +6,11 @@ import { displayNotify, validateForm } from "./validations.js";
  * @param { number } chartTotal Valor total do carrinho 
  * @param { string } observations Campo de Observações de Pedido
  * @param formInfo Dados do Formulário de Informações de Pedido
+ * @param selectedAttendant Vendedor selecionado
+ * @param chartItems Lista de produtos do pedido
+ * @param { number } discount Desconto da venda
  */
-export function checkoutHandler(selectedCustomer = null, selectedAttendant,chartTotal, observations, formInfo) {
+export function checkoutHandler(selectedCustomer = null, selectedAttendant, chartTotal, chartItems, observations, formInfo, discount) {
     const checkoutInfo = document.querySelector('.shopping_info');
 
     if (!validateForm(document.querySelector('#delivery_info_form'))) {
@@ -23,7 +26,7 @@ export function checkoutHandler(selectedCustomer = null, selectedAttendant,chart
 
     let customer = null;
 
-    if (selectedCustomer !== null) {
+    if (selectedCustomer === null) {
         customer = {
             Name: formInfo.name.value,
             Cep: formInfo.cep.value,
@@ -52,9 +55,9 @@ export function checkoutHandler(selectedCustomer = null, selectedAttendant,chart
                     <option value="dinheiro" selected>Dinheiro</option>
                     <option value="debito">Cartão de Débito</option>
                     <option value="credito">Cartão de Crédito</option>
-                    <option value="credito">Cheque</option>
+                    <option value="cheque">Cheque</option>
                     <option value="pix">PIX</option>
-                    <option value="credito">Outro</option>
+                    <option value="outro">Outro</option>
                 </select>
             </div>
 
@@ -68,18 +71,22 @@ export function checkoutHandler(selectedCustomer = null, selectedAttendant,chart
     document.querySelector('.checkout_form').addEventListener('submit', function (ev) {
         ev.preventDefault();
 
+        /** Dados do checkout */
         const checkoutData = {
             Customer: customer,
             Attendant: selectedAttendant,
             OrderInformations: {
+                ChartItems: chartItems,
                 Total: chartTotal,
                 Observations: observations,
-                PaymentMethod: this.payment_method.value
+                PaymentMethod: this.payment_method.value,
+                DeliveryOption: formInfo.delivery_option.value,
+                Discount: discount
             }
-        };
+        }; console.log(checkoutData);
 
         if (formInfo.delivery_fee.value !== '' && formInfo.delivery_fee.value !== '0') {
-            checkoutData.DeliveryFee = formInfo.delivery_fee.value;
+            checkoutData.OrderInformations.DeliveryFee = formInfo.delivery_fee.value;
         }
 
         finishCheckout(checkoutData);

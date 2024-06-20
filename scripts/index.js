@@ -100,7 +100,7 @@ import { Attendants } from "./classes/Attendant.js";
 
             document.querySelector('.popup.checkout').style.display = 'block';
 
-            checkoutHandler(customers.selectedCustomer, attendants.selectedAttendant, products.chartTotal, observations, infoForm);
+            checkoutHandler(customers.selectedCustomer, attendants.selectedAttendant, products.chartTotal, products.chartItems,observations, infoForm, products.discount);
         });
 
         document.querySelector('.chart_popup_trigger').addEventListener('click', () => document.querySelector('.product_chart').classList.add('shown'));
