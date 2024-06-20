@@ -106,8 +106,27 @@ import { Attendants } from "./classes/Attendant.js";
         document.querySelector('.chart_popup_trigger').addEventListener('click', () => document.querySelector('.product_chart').classList.add('shown'));
     
         document.querySelector('#discount_number').addEventListener('change', function () {
-            const discountPercent = (this.value / products.chartTotal) * 100;
+            this.value = Number(this.value.replace(',', '.'));
+
+            let discountPercent = this.value / products.chartTotal;
+            discountPercent *= 100;
+
             document.querySelector('#discount_percent').value = discountPercent;
+
+            products.chartTotal -= this.value;
+
+            const discountDisplayValue = document.querySelector('.popup.discount').createElement('p');
+            discountDisplayValue.innerHTML = `<strong> Subtotal: ${products.chartTotal} </strong>`;
+        });
+
+        document.querySelector('#discount_percent').addEventListener('change', function () {
+            this.value = this.value.replace(',', '.');
+            this.value = Number(this.value.replace('%', ''));
+            
+            let discountNumber = this.value * products.chartTotal;
+            discountNumber /= 100;
+
+            document.querySelector('#discount_number').value = discountNumber;
 
             products.chartTotal -= this.value;
 
