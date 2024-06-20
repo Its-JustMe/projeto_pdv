@@ -106,32 +106,56 @@ import { Attendants } from "./classes/Attendant.js";
         document.querySelector('.chart_popup_trigger').addEventListener('click', () => document.querySelector('.product_chart').classList.add('shown'));
     
         document.querySelector('#discount_number').addEventListener('change', function () {
-            this.value = Number(this.value.replace(',', '.'));
-
-            let discountPercent = this.value / products.chartTotal;
-            discountPercent *= 100;
-
-            document.querySelector('#discount_percent').value = discountPercent;
-
-            products.chartTotal -= this.value;
-
-            const discountDisplayValue = document.querySelector('.popup.discount').createElement('p');
-            discountDisplayValue.innerHTML = `<strong> Subtotal: ${products.chartTotal} </strong>`;
+            let discountValue = parseFloat(this.value.replace(',', '.'));
+        
+            if (isNaN(discountValue) || discountValue < 0) {
+                this.value = 0;
+                return displayNotify('Valor inválido', 'Por favor, insira um valor numérico válido.', 'warning');
+            }
+        
+            if (products.chartTotal < discountValue) {
+                this.value = 0;
+                return displayNotify('Valor inválido', 'Valor de desconto deve ser menor que o subtotal.', 'warning');
+            }
+        
+            let discountPercent = (discountValue / products.chartTotal) * 100;
+            document.querySelector('#discount_percent').value = discountPercent.toFixed(2);
+        
+            let chartTotalWithDiscount = products.chartTotal - discountValue;
+            document.getElementById('chart_total').innerHTML = `
+                <p>
+                    <strong>Subtotal: </strong>
+                    R$ ${chartTotalWithDiscount.toFixed(2)}
+                </p>
+            `;
         });
-
+        
         document.querySelector('#discount_percent').addEventListener('change', function () {
-            this.value = this.value.replace(',', '.');
-            this.value = Number(this.value.replace('%', ''));
-            
-            let discountNumber = this.value * products.chartTotal;
-            discountNumber /= 100;
+            let discountPercent = parseFloat(this.value.replace(',', '.').replace('%', ''));
+        
+            if (isNaN(discountPercent) || discountPercent < 0 || discountPercent > 100) {
+                this.value = 0;
+                return displayNotify('Valor inválido', 'Por favor, insira um valor percentual válido (0-100).', 'warning');
+            }
+        
+            let discountValue = (discountPercent / 100) * products.chartTotal;
+            document.querySelector('#discount_number').value = discountValue.toFixed(2);
+        
+            let chartTotalWithDiscount = products.chartTotal - discountValue;
+            document.getElementById('chart_total').innerHTML = `
+                <p>
+                    <strong>Subtotal: </strong>
+                    R$ ${chartTotalWithDiscount.toFixed(2)}
+                </p>
+            `;
+        });    
+        
+        document.querySelector('.discount_form').addEventListener('submit', function (ev) {
+            ev.preventDefault();
 
-            document.querySelector('#discount_number').value = discountNumber;
-
-            products.chartTotal -= this.value;
-
-            const discountDisplayValue = document.querySelector('.popup.discount').createElement('p');
-            discountDisplayValue.innerHTML = `<strong> Subtotal: ${products.chartTotal} </strong>`;
+            interactions.closePopup('discount');
+            products.discount = Number(this.discount_number.value.replace(',', '.'));
+            products.getChartTotal();
         });
     });
 })();

@@ -1,15 +1,14 @@
 .discount {
     width: 30vw;
-    min-height: 55vh;
+    min-height: 60vh;
 }
 
 .discount_form {
     width: 100%;
     justify-content: center;
     align-items: center;
-    gap: 1.5em;
+    gap: 2em;
     padding-bottom: 1.5em;
-    margin-bottom: 2em;
     border-bottom: .5px solid #acabab;
 }
 
@@ -20,7 +19,7 @@
     padding-right: 4px;
 }
 
-.input_container > input {
+.discount_form > .input_container > input {
     border: 1px solid var(--primary-text-color);
     padding: 5px;
     text-align: center;

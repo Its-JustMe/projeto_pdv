@@ -113,7 +113,7 @@ export class Chart {
         const totalItems = this.chartItems.reduce((acc, product) => acc + product.quantity, 0);
         const subtotal = this.chartItems.reduce((acc, product) => acc + product.price, 0);
         const fee = this.deliveryFee;
-        const total = subtotal + fee;
+        const total = subtotal - this.discount + fee;
         this.chartTotal = total;
     
         document.querySelector('.chart_items').innerHTML =
