@@ -68,8 +68,12 @@
         opacity: 1;
     }
 
-    .info, .obs, .customer, .attendants {
-        width: 80vw;
+    .info, .obs, .customer, .attendant {
+        width: 85vw;
+    }
+
+    .info {
+        height: 95vh;
     }
 
     .discount {

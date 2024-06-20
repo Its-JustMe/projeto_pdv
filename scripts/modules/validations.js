@@ -76,12 +76,14 @@ function validateDeliveryFeeField (form) {
     return true;
 }
 
-
 /** Função que usa a biblioteca Simple-Notify para disparar uma notificação do sistema 
  * @param { string } toastTitle Título da notificação
  * @param { string } toastText Descrição da notificação
  * @param { string } statusType Status/Tipo de notificação ("warning", "error" ou "sucess")
  * @param { number } duration Duração do popup da notificação (valor padrão = 8000 milissegundos)
+ * 
+ * Documentação da biblioteca: https://www.npmjs.com/package/simple-notify/v/0.1.0
+
  * @returns { Notify }
 */
 export const displayNotify = function (toastTitle, toastText, statusType, duration = 8000) {
