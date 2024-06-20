@@ -104,5 +104,15 @@ import { Attendants } from "./classes/Attendant.js";
         });
 
         document.querySelector('.chart_popup_trigger').addEventListener('click', () => document.querySelector('.product_chart').classList.add('shown'));
+    
+        document.querySelector('#discount_number').addEventListener('change', function () {
+            const discountPercent = (this.value / products.chartTotal) * 100;
+            document.querySelector('#discount_percent').value = discountPercent;
+
+            products.chartTotal -= this.value;
+
+            const discountDisplayValue = document.querySelector('.popup.discount').createElement('p');
+            discountDisplayValue.innerHTML = `<strong> Subtotal: ${products.chartTotal} </strong>`;
+        });
     });
 })();

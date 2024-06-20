@@ -68,7 +68,7 @@
         opacity: 1;
     }
 
-    .info, .obs, .customer {
+    .info, .obs, .customer, .attendants {
         width: 80vw;
     }
 

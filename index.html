@@ -283,7 +283,23 @@
             <article class="flex_column">
                 <h3 class="subheading">Desconto</h3>
 
-                <div class="discount_form_container"></div>
+                <div class="discount_form_container">
+                    <form class="discount_form flex_column">
+                        <label for="discount_number">
+                            Insira um valor de desconto:
+                        </label>
+                        <div class="input_container flex_row">
+                            <label for="discount_number">R$</label>
+                            <input type="text" name="discount_number" id="discount_number" placeholder="18,00" min="0">
+                            
+                            <span style="font-weight: bold;">=</span>
+
+                            <input type="text" name="discount_percent" id="discount_percent" placeholder="15" min="0">
+                            <label for="discount_percent">%</label>
+                        </div>
+                        <input type="submit" class="button button_form button_finish" value="Salvar">
+                    </form>
+                </div>
                     
                 </div>
             </article>

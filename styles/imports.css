@@ -9,5 +9,6 @@
 @import './components/popups/obs_popup.css';
 @import './components/popups/checkout.css';
 @import './components/popups/info_popup.css';
+@import './components/popups/discount.css';
 @import './components/responsive/mobile.css';
 @import './components/responsive/desktop.css';
