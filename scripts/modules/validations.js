@@ -21,6 +21,7 @@ export function updateFormData (form, customerData) {
 
 /** Função que lida com as validações dos formulários 
  * @param { HTMLFormElement } form Elemento Formulário
+ * @returns { boolean }
 */
 export function validateForm (form) {
     if (!isEmptyField(form) || !validateDeliveryFeeField(form)) {
@@ -32,6 +33,8 @@ export function validateForm (form) {
 
 /** Função que valida campos vazios 
  * @param { HTMLFormElement } form Elemento Formulário
+ * 
+ * @returns { boolean }
 */
 function isEmptyField (form) {
     const formFields = [
