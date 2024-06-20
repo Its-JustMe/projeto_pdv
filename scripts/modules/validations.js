@@ -24,11 +24,7 @@ export function updateFormData (form, customerData) {
  * @returns { boolean }
 */
 export function validateForm (form) {
-    if (!isEmptyField(form) || !validateDeliveryFeeField(form)) {
-        return false;
-    }
-
-    return true;
+    return isEmptyField(form) && validateDeliveryFeeField(form);
 }
 
 /** Função que valida campos vazios 
@@ -53,10 +49,10 @@ function isEmptyField (form) {
         }
     }
 
-    if (form['customer_cep'].value !== '' && form['customer_cep'].value.length < 9 || form['customer_cep'].value.length > 9) {
+    if (form['customer_zip_code'].value !== '' && form['customer_zip_code'].value.length < 9 || form['customer_zip_code'].value.length > 9) {
         displayNotify('Erro(s) no formulário', 'Campo CEP inválido.', 'error');
         document.querySelector('.popup.info').style.display = 'block';
-        form['customer_cep'].classList.add('invalid');
+        form['customer_zip_code'].classList.add('invalid');
 
         return false;
     }

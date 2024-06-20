@@ -49,12 +49,12 @@ import { Attendants } from "./classes/Attendant.js";
 
         document.querySelectorAll('.select_btn').forEach(btn => {
             btn.addEventListener('click', function () {
-                document.querySelector(`.popup.${this.id}`).style.display = 'block';
+                document.querySelector(`.popup.${this.getAttribute('data-popup-name')}`).style.display = 'block';
             });
         });
 
         document.querySelectorAll('.popup').forEach(popup => {
-            const popupName = popup.id;
+            const popupName = popup.getAttribute('data-popup-name');
 
             document.querySelector(`.popup.${popupName} .close_btn`).onclick = () => interactions.closePopup(popupName)
         });

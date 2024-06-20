@@ -99,10 +99,10 @@
         <div class="top_chart_elements flex_row">
             <span class="close_popup">&times;</span>
             <div class="buttons_container flex_column">
-                <button class="select_btn subheading underline" id="customer">
+                <button class="select_btn subheading underline" data-popup-name="customer">
                     Selecionar cliente
                 </button>
-                <button class="select_btn subheading underline" id="attendant">
+                <button class="select_btn subheading underline" data-popup-name="attendant">
                     Selecionar vendedor
                 </button>
             </div>
@@ -131,7 +131,7 @@
         </article>
     </section>
 
-    <div class="popup customer" id="customer">
+    <div class="popup customer" data-popup-name="customer">
         <div class="popup_content">
             <span class="close_btn">&times;</span>
 
@@ -145,7 +145,7 @@
         </div>
     </div>
 
-    <div class="popup obs" id="obs">
+    <div class="popup obs" data-popup-name="obs">
         <div class="popup_content">
             <span class="close_btn">&times;</span>
 
@@ -162,7 +162,7 @@
         </div>
     </div>
 
-    <div class="popup info" id="info">
+    <div class="popup info" data-popup-name="info">
         <div class="popup_content">
             <span class="close_btn">
                 &times;
@@ -199,10 +199,10 @@
                         </div>
 
                         <div class="input_container flex_column">
-                            <label for="customer_cep">
+                            <label for="customer_zip_code">
                                 CEP:
                             </label>
-                            <input class="form_input" type="text" name="cep" id="customer_cep" placeholder="58270-337">
+                            <input class="form_input" type="text" name="cep" id="customer_zip_code" placeholder="58270-337">
                         </div>
                     </div>
 
@@ -215,7 +215,7 @@
                             <input class="form_input" type="text" name="phone" id="phone" placeholder="(83) 9 0000-0000">
                         </div>
                         <div class="input_container flex_column">
-                            <label for="customer_complement">
+                            <label for="complement">
                                 Complemento:
                             </label>
                             <input class="form_input" type="text" name="complement" id="complement" placeholder="Casa de Azul">
@@ -248,7 +248,7 @@
         </div>
     </div>
 
-    <div class="popup attendant" id="attendant">
+    <div class="popup attendant" data-popup-name="attendant">
         <div class="popup_content">
             <span class="close_btn">&times;</span>
 
@@ -262,7 +262,7 @@
         </div>
     </div>
 
-    <div class="popup checkout" id="checkout">
+    <div class="popup checkout" data-popup-name="checkout">
         <div class="popup_content">
             <span class="close_btn">&times;</span>
 
@@ -276,7 +276,7 @@
         </div>
     </div>
 
-    <div class="popup discount" id="discount">
+    <div class="popup discount" data-popup-name="discount">
         <div class="popup_content">
             <span class="close_btn">&times;</span>
 
@@ -290,11 +290,11 @@
                         </label>
                         <div class="input_container flex_row">
                             <label for="discount_number">R$</label>
-                            <input type="text" name="discount_number" id="discount_number" placeholder="18,00" min="0">
+                            <input type="text" name="discount_number" id="discount_number" placeholder="18,00">
                             
                             <span style="font-weight: bold;">=</span>
 
-                            <input type="text" name="discount_percent" id="discount_percent" placeholder="15" min="0">
+                            <input type="text" name="discount_percent" id="discount_percent" placeholder="15">
                             <label for="discount_percent">%</label>
                         </div>
                         <input type="submit" class="button button_form button_finish" value="Salvar">
@@ -316,4 +316,4 @@
     <!-- CDN JS Simple-Notify -->
     <script src="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.min.js"></script>
 </body>
-</html
+</html>
