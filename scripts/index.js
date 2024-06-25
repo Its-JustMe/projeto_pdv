@@ -68,11 +68,23 @@ import { Attendants } from "./classes/Attendant.js";
             observations = this.obsText.value;
         });
 
+        let infoFormData = null;
+
         infoForm.addEventListener('submit', function (ev) {
             ev.preventDefault();
             if (validateForm(this)) {
                 document.querySelector('.popup.info').style.display = 'none';
                 products.setDeliveryFeeValue(Number(this.delivery_fee.value));
+
+                infoFormData = {
+                    name: this.name.value,
+                    phone: this.phone.value,
+                    zipCode: this.customer_zip_code.value,
+                    address: this.address.value,
+                    complement: this.complement.value,
+                    deliveryOption: this.delivery_option.value,
+                    delivery_fee: this.delivery_fee.value,
+                };
             }
         });
 
@@ -100,7 +112,7 @@ import { Attendants } from "./classes/Attendant.js";
 
             document.querySelector('.popup.checkout').style.display = 'block';
 
-            checkoutHandler(customers.selectedCustomer, attendants.selectedAttendant, products.chartTotal, products.chartItems,observations, infoForm, products.discount);
+            checkoutHandler(customers.selectedCustomer, attendants.selectedAttendant, products.chartTotal, products.chartItems, observations, infoFormData, products.discount);
         });
 
         document.querySelector('.chart_popup_trigger').addEventListener('click', () => document.querySelector('.product_chart').classList.add('shown'));

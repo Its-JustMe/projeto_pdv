@@ -2,20 +2,49 @@ import { closePopup } from "./interactions.js";
 import { displayNotify, validateForm } from "./validations.js";
 
 /** Função que lida com o checkout 
- * @param selectedCustomer Cliente do banco de dados (se selecionado)
+ * @param {{
+ * "Id": string,
+ * "Store_id": string,
+ * "Name": string,
+ * "Phone": string,
+ * "Adress": string,
+ * "City": string,
+ * "State": string,
+ * "Neighborhood": string,
+ * "Zip_code": string,
+ * "Country": string
+ * } | null } selectedCustomer Cliente do banco de dados (se selecionado)
+ * 
  * @param { number } chartTotal Valor total do carrinho 
  * @param { string } observations Campo de Observações de Pedido
- * @param formInfo Dados do Formulário de Informações de Pedido
- * @param selectedAttendant Vendedor selecionado
+ * 
+ * @param  {{
+ *  name: string;
+ *  phone: string;
+ *  zipCode: string;
+ *  address: string;
+ *  complement: string;
+ *  deliveryOption: string;
+ *  delivery_fee: string;
+ * }} infoFormData Dados do Formulário de Informações de Pedido
+ * 
+ * @param {{
+ *   "Id": string,
+ *   "Name": string,
+ *   "Phone": string,
+ *   "Email": string,
+ *   "Position": string,
+ *   "Department": string,
+ *   "Hire_date": string,
+ *   "Sales_Count": string
+ * }} selectedAttendant Vendedor selecionado
+ * 
  * @param chartItems Lista de produtos do pedido
+ * 
  * @param { number } discount Desconto da venda
  */
-export function checkoutHandler(selectedCustomer = null, selectedAttendant, chartTotal, chartItems, observations, formInfo, discount) {
+export function checkoutHandler(selectedCustomer = null, selectedAttendant, chartTotal, chartItems, observations, infoFormData, discount) {
     const checkoutInfo = document.querySelector('.shopping_info');
-
-    if (!validateForm(document.querySelector('#delivery_info_form'))) {
-        return closePopup('checkout');
-    }
 
     if (!selectedAttendant) {
         displayNotify('Vendedor não selecionado', 'É necessário selecionar um vendedor para continuar.', 'warning');
@@ -24,17 +53,7 @@ export function checkoutHandler(selectedCustomer = null, selectedAttendant, char
         return closePopup('checkout');
     }
 
-    let customer = null;
-
-    if (selectedCustomer === null) {
-        customer = {
-            Name: formInfo.name.value,
-            Cep: formInfo.cep.value,
-            Phone: formInfo.phone.value
-        };
-    } else {
-        customer = selectedCustomer;
-    }
+    let customer = selectedCustomer || defaultCustomer;
 
     checkoutInfo.innerHTML = 
     `
@@ -80,14 +99,24 @@ export function checkoutHandler(selectedCustomer = null, selectedAttendant, char
                 Total: chartTotal,
                 Observations: observations,
                 PaymentMethod: this.payment_method.value,
-                DeliveryOption: formInfo.delivery_option.value,
                 Discount: discount
             }
-        }; console.log(checkoutData);
+        }; 
 
-        if (formInfo.delivery_fee.value !== '' && formInfo.delivery_fee.value !== '0') {
-            checkoutData.OrderInformations.DeliveryFee = formInfo.delivery_fee.value;
+        if (infoFormData) {
+            checkoutData.OrderInformations.DeliveryFee = infoFormData.delivery_fee;
+
+            checkoutData.DeliveryInfo = {
+                DeliveryFee: infoFormData.delivery_fee,
+                DeliveryOption: infoFormData.delivery_option,
+                CustomerAddress: infoFormData.address,
+                Complement: infoFormData.complement,
+                ZipCode: infoFormData.customer_zip_code,
+                CustomerName: infoFormData.name
+            };
         }
+
+        console.log(checkoutData);
 
         finishCheckout(checkoutData);
     });
