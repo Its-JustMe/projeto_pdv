@@ -83,7 +83,7 @@ import { Attendants } from "./classes/Attendant.js";
                     address: this.address.value,
                     complement: this.complement.value,
                     deliveryOption: this.delivery_option.value,
-                    delivery_fee: this.delivery_fee.value,
+                    deliveryFee: this.delivery_fee.value,
                 };
             }
         });

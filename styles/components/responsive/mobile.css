@@ -112,4 +112,30 @@
     .checkout {
         width: 90vw;
     }
+
+    .btn_payment_container {
+        flex-direction: column;
+    }
+    .btn_payment_container > button {
+        width: 70vw;
+        padding: 4px;
+    }
+
+    .checkout {
+        min-width: 80vw;
+        min-height: 95vh;
+    }
+}
+
+@media screen and (max-width: 478px) {
+    .attendant_grid {
+        display: grid;
+        grid-template-columns: repeat(2, .8fr);
+        place-items: start;
+        gap: .8em;
+    }
+
+    .attendant {
+        width: 95vw;
+    }
 }

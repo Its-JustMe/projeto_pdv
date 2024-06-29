@@ -1,6 +1,6 @@
 .checkout {
-    width: 30vw;
-    min-height: 40vh;
+    min-width: 50vw;
+    min-height: 85vh;
 }
 
 .shopping_info {
@@ -21,7 +21,9 @@
 
 .checkout_form {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 1.5em;
 
     margin-top: 1em;
@@ -29,4 +31,29 @@
 
 .finish_form_btn {
     font-size: calc(var(--text-size) + .1em);
+}
+
+.payment_method_container {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 300px;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.button_remove_payment {
+    align-self: flex-end;
+}
+
+.button_add_payment {
+    position: relative;
+}
+
+.remaining_amount_container {
+    margin-top: 1em;
+}
+
+.btn_payment_container {
+    flex-wrap: wrap;
 }

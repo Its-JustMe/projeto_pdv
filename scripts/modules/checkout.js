@@ -1,7 +1,112 @@
 import { closePopup } from "./interactions.js";
 import { displayNotify, validateForm } from "./validations.js";
 
-/** Função que lida com o checkout 
+/**
+ * Função que atualiza o valor restante a ser pago
+ */
+function updateRemainingAmount(chartTotal) {
+    const paymentAmountInputs = document.querySelectorAll('.payment_amount');
+    let totalPaid = 0;
+    paymentAmountInputs.forEach(input => {
+        totalPaid += parseFloat(input.value) || 0;
+    });
+
+    const remainingAmount = chartTotal - totalPaid;
+    const remainingAmountElement = document.querySelector('.remaining_amount');
+
+    if (remainingAmountElement) {
+        remainingAmountElement.innerText = `R$ ${remainingAmount.toFixed(2)}`;
+    }
+    return remainingAmount;
+}
+
+/**
+ * Função que adiciona um método de pagamento
+ */
+function addPaymentMethod(chartTotal) {
+    let remainingAmount = updateRemainingAmount(chartTotal);
+    if (remainingAmount <= 0) {
+        displayNotify('Pagamento coberto', 'Não é possível adicionar mais formas de pagamento.', 'warning');
+        return;
+    }
+
+    const paymentContainer = document.createElement('div');
+    paymentContainer.classList.add('payment_method_container');
+    paymentContainer.innerHTML = `
+        <div class="flex_column">
+            <label for="payment_method">Forma de pagamento:</label>
+            <select name="payment_method" class="payment_method">
+                <option value="dinheiro">Dinheiro</option>
+                <option value="debito">Cartão de Débito</option>
+                <option value="credito">Cartão de Crédito</option>
+                <option value="cheque">Cheque</option>
+                <option value="pix">PIX</option>
+                <option value="outro">Outro</option>
+            </select>
+        </div>
+        <div class="flex_column">
+            <label for="payment_amount">Valor:</label>
+            <input type="text" name="payment_amount" class="form_input payment_amount" placeholder="R$ 0,00">
+        </div>
+        <button type="button" class="button_remove_payment" style="font-size: 1.5em; cursor: pointer">&times;</button>
+    `;
+
+    paymentContainer.querySelector('.payment_amount').addEventListener('input', () => {
+        remainingAmount = updateRemainingAmount(chartTotal);
+    });
+
+    paymentContainer.querySelector('.button_remove_payment').addEventListener('click', () => {
+        paymentContainer.remove();
+        remainingAmount = updateRemainingAmount(chartTotal);
+        if (document.querySelectorAll('.payment_method_container').length === 0) {
+            displayNotify('Pagamento obrigatório', 'Insira ao menos uma forma de pagamento.', 'warning', 4000);
+            addPaymentMethod(chartTotal);
+        }
+    });
+
+    document.querySelector('.payments_container').appendChild(paymentContainer);
+}
+
+/**
+ * Função que finaliza checkout e envia os dados do pedido para o servidor.
+ * @param { {
+ *   Customer: {
+ *      Name: string;
+ *      Cep: string;
+ *      Phone: string;
+ *   };
+ *   OrderInformations: {
+ *      Total: string;
+ *      Observations: string;
+ *      DeliveryFee: string | null;
+ *      PaymentMethod: string;
+ *   }
+ * } 
+ * } checkoutData Dados do Checkout
+ */
+function finishCheckout(checkoutData) {
+    console.log(checkoutData);
+    // Enviando dados p/ database
+    fetch('/checkout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(checkoutData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Ok:', data);
+        displayNotify('Checkout concluído!', 'Checkout realizado com sucesso.', 'success');
+    })
+    .catch((error) => {
+        console.log('Erro:', error);
+        displayNotify('Erro: Falha no Checkout', 'Ocorreu um erro ao realizar o checkout. Tente novamente.', 'error');
+    });
+}
+
+/** 
+ * Função que lida com o checkout 
  * @param {{
  * "Id": string,
  * "Store_id": string,
@@ -25,7 +130,7 @@ import { displayNotify, validateForm } from "./validations.js";
  *  address: string;
  *  complement: string;
  *  deliveryOption: string;
- *  delivery_fee: string;
+ *  deliveryFee: string;
  * }} infoFormData Dados do Formulário de Informações de Pedido
  * 
  * @param {{
@@ -43,7 +148,7 @@ import { displayNotify, validateForm } from "./validations.js";
  * 
  * @param { number } discount Desconto da venda
  */
-export function checkoutHandler(selectedCustomer = null, selectedAttendant, chartTotal, chartItems, observations, infoFormData, discount) {
+export function checkoutHandler(selectedCustomer, selectedAttendant, chartTotal, chartItems, observations, infoFormData, discount) {
     const checkoutInfo = document.querySelector('.shopping_info');
 
     if (!selectedAttendant) {
@@ -53,42 +158,56 @@ export function checkoutHandler(selectedCustomer = null, selectedAttendant, char
         return closePopup('checkout');
     }
 
-    let customer = selectedCustomer || defaultCustomer;
+    let customer = selectedCustomer;
 
-    checkoutInfo.innerHTML = 
-    `
+    checkoutInfo.innerHTML = `
         <div class="customer">      
             <h2 class="checkout_heading subheading flex_column">
                 <strong>Total a pagar</strong>
-                <span style="font-size: calc(var(--text-size) + 1em)">R$ ${chartTotal.toFixed(2)}</span>
+                <span style="font-size: calc(var(--text-size) + .5em)">R$ ${chartTotal.toFixed(2)}</span>
             </h2>
         </div>
-
-        <form action="/checkout" method="post" class="checkout_form subheading">
-            <div class="flex_column">
-                <label for="payment">
-                    Forma de pagamento:
-                </label>
-                
-                <select name="payment_method" id="payment_method">
-                    <option value="dinheiro" selected>Dinheiro</option>
-                    <option value="debito">Cartão de Débito</option>
-                    <option value="credito">Cartão de Crédito</option>
-                    <option value="cheque">Cheque</option>
-                    <option value="pix">PIX</option>
-                    <option value="outro">Outro</option>
-                </select>
-            </div>
-
-            <div class="flex_row" style="gap: 1em;">
+        <form id="multiple_payments_form" class="checkout_form subheading flex_column">
+            <div class="payments_container"></div>
+            <div class="btn_payment_container flex_row" style="gap: 1em;">
+                <button type="button" class="button_finish button_save finish_form_btn button_add_payment">Outro Pagamento</button>
                 <button class="button_finish button_save finish_form_btn" type="submit">Finalizar</button>
                 <button class="button_finish button_save finish_form_btn cancel" type="button">Cancelar</button>
             </div>
         </form>
     `;
 
+    let remainingAmount = chartTotal;
+
+    document.querySelector('.button_add_payment').addEventListener('click', () => addPaymentMethod(chartTotal));
+    
+    addPaymentMethod(chartTotal);
+
+    document.querySelector('.checkout_form').insertAdjacentHTML('beforeend', `
+        <div class="flex_column remaining_amount_container">
+            <p class="text"style="font-size: calc(var(--text-size) + .3em)">
+                <strong>Restante a pagar: </strong>
+                <span class="remaining_amount">R$ ${remainingAmount.toFixed(2)}</span>
+            </p>
+        </div>
+    `);
+
     document.querySelector('.checkout_form').addEventListener('submit', function (ev) {
         ev.preventDefault();
+
+        if (updateRemainingAmount(chartTotal) > 0) {
+            displayNotify('Pagamento incompleto', 'O valor total não foi coberto.', 'warning');
+            return;
+        }
+
+        const payments = [];
+        const paymentContainers = document.querySelectorAll('.payment_method_container');
+
+        paymentContainers.forEach(container => {
+            const paymentMethod = container.querySelector('.payment_method').value;
+            const paymentAmount = parseFloat(container.querySelector('.payment_amount').value) || 0;
+            payments.push({ method: paymentMethod, amount: paymentAmount });
+        });
 
         /** Dados do checkout */
         const checkoutData = {
@@ -98,66 +217,28 @@ export function checkoutHandler(selectedCustomer = null, selectedAttendant, char
                 ChartItems: chartItems,
                 Total: chartTotal,
                 Observations: observations,
-                PaymentMethod: this.payment_method.value,
+                PaymentMethods: payments,
                 Discount: discount
             }
         }; 
 
         if (infoFormData) {
-            checkoutData.OrderInformations.DeliveryFee = infoFormData.delivery_fee;
+            checkoutData.OrderInformations.DeliveryFee = infoFormData.deliveryFee;
 
             checkoutData.DeliveryInfo = {
-                DeliveryFee: infoFormData.delivery_fee,
-                DeliveryOption: infoFormData.delivery_option,
+                DeliveryFee: infoFormData.deliveryFee,
+                DeliveryOption: infoFormData.deliveryOption,
                 CustomerAddress: infoFormData.address,
                 Complement: infoFormData.complement,
-                ZipCode: infoFormData.customer_zip_code,
+                ZipCode: infoFormData.zipCode, 
                 CustomerName: infoFormData.name
             };
         }
-
-        console.log(checkoutData);
 
         finishCheckout(checkoutData);
     });
 
     document.querySelector('.cancel').addEventListener('click', () => {
         document.querySelector('.popup.checkout').style.display = 'none';
-    });
-}
-
-/** Função que finaliza checkout e envia os dados do pedido para o servidor. 
- * @param { {
- *   Customer: {
- *      Name: string;
- *      Cep: string;
- *      Phone: string;
- *   };
- *   OrderInformations: {
- *      Total: string;
- *      Observations: string;
- *      DeliveryFee: string | null;
- *      PaymentMethod: string;
- *   }
- * } 
- * } checkoutData Dados do Checkout
-*/
-function finishCheckout(checkoutData) {
-    // Enviando dados p/ database
-    fetch('/checkout', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(checkoutData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Ok:', data);
-        displayNotify('Checkout concluído!', 'Checkout realizado com sucesso.', 'sucess');
-    })
-    .catch((error) => {
-        console.error('Erro:', error);
-        displayNotify('Erro: Falha no Checkout', 'Ocorreu um erro ao realizar o checkout. Tente novamente.', 'error');
     });
 }
