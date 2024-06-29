@@ -175,10 +175,9 @@
                     <div class="input_container flex_column">
                         <label for="delivery_option">
                             Qual o tipo de entrega?
-                            <span class="required_field">*</span>
+                            <span>*</span>
                         </label>
-                        <select name="deliveryOption" id="delivery_option">
-                            <option value="retirada">Retirada na loja</option>
+                        <select name="deliveryOption" id="delivery_option" required>
                             <option value="padrao">Entrega padrão</option>
                             <option value="motoboy">Motoboy</option>
                             <option value="correios">Correios</option>
@@ -191,18 +190,18 @@
                         <div class="input_container flex_column">
                             <label for="delivery_fee">
                                 Taxa de entrega:
-                                <span class="required_field" id="delivery_required" style="visibility: hidden">
+                                <span class="required_field">
                                     *
                                 </span>
                             </label>
-                            <input class="form_input" type="text" name="deliveryFee" id="delivery_fee" placeholder="R$ 10,00">
+                            <input class="form_input" type="text" name="deliveryFee" id="delivery_fee" placeholder="R$ 10,00" required>
                         </div>
 
                         <div class="input_container flex_column">
                             <label for="customer_zip_code">
                                 CEP:
                             </label>
-                            <input class="form_input" type="text" name="zipCode" id="customer_zip_code" placeholder="58270-337">
+                            <input class="form_input" type="text" name="zipCode" id="customer_zip_code" placeholder="58270-337" required>
                         </div>
                     </div>
 
@@ -212,7 +211,7 @@
                                 Telefone
                                 <span class="required_field">*</span>
                             </label>
-                            <input class="form_input" type="text" name="phone" id="phone" placeholder="(83) 9 0000-0000">
+                            <input class="form_input" type="text" name="phone" id="phone" placeholder="(83) 9 0000-0000" required>
                         </div>
                         <div class="input_container flex_column">
                             <label for="complement">
@@ -228,7 +227,7 @@
                             <span class="required_field">*</span>
                         </label>
 
-                        <input class="form_input" type="text" name="customer_name" id="name" placeholder="Seu nome">
+                        <input class="form_input" type="text" name="customer_name" id="name" placeholder="Seu nome" required>
                     </div>
 
                     <div class="input_container flex_column">
@@ -236,7 +235,7 @@
                             Endereço:
                             <span class="required_field">*</span>
                         </label>
-                        <input class="form_input" type="text" name="customer_address" id="address" placeholder="Av. Brasil, 387">
+                        <input class="form_input" type="text" name="customer_address" id="address" placeholder="Av. Brasil, 387" required>
                     </div>
 
                     <div class="input_container flex_row">

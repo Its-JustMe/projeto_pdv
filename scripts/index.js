@@ -88,14 +88,6 @@ import { Attendants } from "./classes/Attendant.js";
             }
         });
 
-        document.querySelector('#delivery_option').addEventListener('change', function () {
-            if (this.value !== 'Retirada na loja') {
-                document.querySelector('#delivery_required').style.visibility = 'visible';
-            } else {
-                document.querySelector('#delivery_required').style.visibility = 'hidden';
-            }
-        });
-
         document.querySelectorAll('.form_input').forEach(input => {
             input.addEventListener('change', function () {
                 if (this.classList.contains('invalid')) {
